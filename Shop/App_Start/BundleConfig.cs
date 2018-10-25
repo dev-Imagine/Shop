@@ -23,6 +23,7 @@ namespace Shop
                         "~/Content/css/flexslider.css",
                          "~/Content/css/owl.carousel.min.css",
                           "~/Content/css/owl.theme.default.min.css",
+                          "~/Content/css/simple-sidebar.css",
                           "~/Content/css/style.css"
                         ));
 

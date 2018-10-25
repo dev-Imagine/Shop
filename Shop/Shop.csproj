@@ -212,6 +212,7 @@
     <Content Include="Content\css\flexslider.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\owl.theme.default.min.css" />
+    <Content Include="Content\css\simple-sidebar.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
@@ -223,9 +224,6 @@
     <Content Include="Content\images\img_bg_5.jpg" />
     <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\loc.png" />
-    <Content Include="Content\images\person1.jpg" />
-    <Content Include="Content\images\person2.jpg" />
-    <Content Include="Content\images\person3.jpg" />
     <Content Include="Content\images\product-1.jpg" />
     <Content Include="Content\images\product-2.jpg" />
     <Content Include="Content\images\product-3.jpg" />
