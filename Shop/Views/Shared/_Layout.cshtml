@@ -1,9 +1,4 @@
-﻿@*@Styles.Render("~/Content/css")*@
-
-
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,70 +12,28 @@
     <meta name="keywords" content="" />
     <meta name="author" content="" />
 
-
-    <link rel="stylesheet" href="~/Content/css/animate.css">
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="~/Content/css/icomoon.css">
-    <!-- Bootstrap  -->
-    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
-
-    <!-- Flexslider  -->
-    <link rel="stylesheet" href="~/Content/css/flexslider.css">
-
-    <!-- Owl Carousel  -->
-    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/Content/css/owl.theme.default.min.css">
-
-    <!-- Theme style  -->
-    <link rel="stylesheet" href="~/Content/css/style.css">
-
-    <!-- Modernizr JS -->
-    <script src="~/Content/js/modernizr-2.6.2.min.js"></script>
-
+    @Styles.Render("~/css/animate")
+    @Styles.Render("~/css/bootstrap")
+    @Styles.Render("~/css/material-icons")
+    @Styles.Render("~/css/style")
+    @Scripts.Render("~/js/ModernizrJs")
 
 </head>
 <body>
-    <nav class="fh5co-nav" role="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-xs-2">
-                    <div id="fh5co-logo"><a href="@Url.Action("Index", "Home")">Shop.</a></div>
-                </div>
-                <div class="col-md-6 col-xs-6 text-center menu-1">
-                    <ul>
-                        <li class="has-dropdown">
-                            <a href="@Url.Action("Product", "Home")">Shop</a>
-                            <ul class="dropdown">
-                                <li><a href="@Url.Action("Single", "Home")">Single Shop</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="@Url.Action("About", "Home")">About</a></li>
-                        <li class="has-dropdown">
-                            <a href="@Url.Action("Services", "Home")">Services</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Web Design</a></li>
-                                <li><a href="#">eCommerce</a></li>
-                                <li><a href="#">Branding</a></li>
-                                <li><a href="#">API</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
-                    <ul>
-                        <li class="search">
-                            <div class="input-group">
-                                <input type="text" placeholder="Search..">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
-                                </span>
-                            </div>
-                        </li>
-                        <li class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="icon-shopping-cart"></i></span></a></li>
-                    </ul>
-                </div>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="@Url.Action("Index", "Home")">Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <form class="form-inline my-2 my-lg-0 mr-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            
+            <div class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="outline-shopping_cart icon-image-preview"></i></span></a></div>
 
         </div>
     </nav>
@@ -96,33 +49,16 @@
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
                     <ul class="fh5co-footer-links">
-                        <li><a href="#">About</a></li>
+                        <li><a href="@Url.Action("About", "Home")">About</a></li>
+                        <li><a href="@Url.Action("Product", "Home")">Product</a></li>
+                        <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                        <li><a href="@Url.Action("Single", "Home")">Single page</a></li>
+                        <li><a href="@Url.Action("Services", "Home")">Services</a></li>
                         <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact</a></li>
                         <li><a href="#">Terms</a></li>
-                        <li><a href="#">Meetups</a></li>
                     </ul>
                 </div>
 
-                <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
-                    <ul class="fh5co-footer-links">
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Handbook</a></li>
-                        <li><a href="#">Held Desk</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
-                    <ul class="fh5co-footer-links">
-                        <li><a href="#">Find Designers</a></li>
-                        <li><a href="#">Find Developers</a></li>
-                        <li><a href="#">Teams</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">API</a></li>
-                    </ul>
-                </div>
             </div>
 
             <div class="row copyright">
@@ -145,22 +81,12 @@
         <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
     </div>
 
-    <!-- jQuery -->
-    <script src="~/Content/js/jquery.min.js"></script>
-    <!-- jQuery Easing -->
-    <script src="~/Content/js/jquery.easing.1.3.js"></script>
-    <!-- Bootstrap -->
-    <script src="~/Content/js/bootstrap.min.js"></script>
-    <!-- Waypoints -->
-    <script src="~/Content/js/jquery.waypoints.min.js"></script>
-    <!-- Carousel -->
-    <script src="~/Content/js/owl.carousel.min.js"></script>
-    <!-- countTo -->
-    <script src="~/Content/js/jquery.countTo.js"></script>
-    <!-- Flexslider -->
-    <script src="~/Content/js/jquery.flexslider-min.js"></script>
-    <!-- Main -->
-    <script src="~/Content/js/main.js"></script>
+
+    @Scripts.Render("~/js/jQuery")
+    @Scripts.Render("~/js/bootstrap")
+    @Scripts.Render("~/js/carousel")
+    @Scripts.Render("~/js/main")
+
 
     @RenderSection("scripts", required: false)
 </body>
@@ -170,5 +96,4 @@
 
 
 
-@*@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)*@
+

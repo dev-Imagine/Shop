@@ -8,23 +8,43 @@ namespace Shop
         // Para obtener más información sobre las uniones, visite https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            /*bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            // CSS
+            bundles.Add(new StyleBundle("~/css/animate").Include(
+                        "~/Content/css/animate.css"));
+            bundles.Add(new StyleBundle("~/css/material-icons").Include(
+                        "~/Content/css/material-icons.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+            bundles.Add(new StyleBundle("~/css/bootstrap").Include(
+                        "~/Content/css/bootstrap.min.css"));
 
-            // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
-            // para la producción, use la herramienta de compilación disponible en https://modernizr.com para seleccionar solo las pruebas que necesite.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+            bundles.Add(new StyleBundle("~/css/style").Include(
+                        "~/Content/css/flexslider.css",
+                         "~/Content/css/owl.carousel.min.css",
+                          "~/Content/css/owl.theme.default.min.css",
+                          "~/Content/css/style.css"
+                        ));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+            // JS
+            bundles.Add(new ScriptBundle("~/js/bootstrap").Include(
+                        "~/Content/js/bootstrap.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));*/
+            bundles.Add(new ScriptBundle("~/js/ModernizrJs").Include(
+                        "~/Content/js/modernizr-2.6.2.min.js"));
+
+            bundles.Add(new ScriptBundle("~/js/jQuery").Include(
+                        "~/Content/js/jquery.min.js",
+                        "~/Content/js/jquery.easing.1.3.js",
+                        "~/Content/js/jquery.waypoints.min.js",
+                        "~/Content/js/jquery.countTo.js",
+                        "~/Content/js/jquery.flexslider-min.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/js/carousel").Include(
+                        "~/Content/js/owl.carousel.min.js"));
+
+            bundles.Add(new ScriptBundle("~/js/main").Include(
+                        "~/Content/js/main.js"));
+
         }
     }
 }

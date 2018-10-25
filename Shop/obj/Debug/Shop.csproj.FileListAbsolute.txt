@@ -96,3 +96,7 @@ D:\GitHub\Repositorios\Shop\Shop\obj\Debug\Shop.csproj.CoreCompileInputs.cache
 D:\GitHub\Repositorios\Shop\Shop\obj\Debug\Shop.csproj.CopyComplete
 D:\GitHub\Repositorios\Shop\Shop\obj\Debug\Shop.dll
 D:\GitHub\Repositorios\Shop\Shop\obj\Debug\Shop.pdb
+D:\GitHub\Repositorios\Shop\Shop\bin\EntityFramework.dll
+D:\GitHub\Repositorios\Shop\Shop\bin\EntityFramework.SqlServer.dll
+D:\GitHub\Repositorios\Shop\Shop\bin\EntityFramework.xml
+D:\GitHub\Repositorios\Shop\Shop\bin\EntityFramework.SqlServer.xml
