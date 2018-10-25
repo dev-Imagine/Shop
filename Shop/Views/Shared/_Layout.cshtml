@@ -14,29 +14,37 @@
 
     @Styles.Render("~/css/animate")
     @Styles.Render("~/css/bootstrap")
-    @Styles.Render("~/css/material-icons")
+    @Styles.Render("~/css/fontawesome")
     @Styles.Render("~/css/style")
     @Scripts.Render("~/js/ModernizrJs")
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="@Url.Action("Index", "Home")">Shop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Shop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form class="form-inline my-2 my-lg-0 mr-auto">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            
-            <div class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="outline-shopping_cart icon-image-preview"></i></span></a></div>
+                <form class="form-inline my-2 my-lg-0 mr-auto w-100">
 
-        </div>
-    </nav>
+                    <div class="input-group mb-3" style="margin-left: auto; margin-right: auto; width:70%;">
+                        <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-dark" style="margin-top:0px; margin-bottom:0px;" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <div class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="fa fa-shopping-cart"></i></span></a></div>
+
+            </div>
+        </nav>
+    </div>
 
     @RenderBody()
 

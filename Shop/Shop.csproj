@@ -210,12 +210,12 @@
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\flexslider.css" />
-    <Content Include="Content\css\material-icons.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\owl.theme.default.min.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\fonts\icomoon\icomoon.svg" />
     <Content Include="Content\images\img_bg_1.jpg" />
     <Content Include="Content\images\img_bg_2.jpg" />
     <Content Include="Content\images\img_bg_3.jpg" />
@@ -251,6 +251,7 @@
     <Content Include="Content\js\owl.carousel.min.js" />
     <Content Include="Content\js\respond.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="Content\fonts\fontawesome\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -260,9 +261,6 @@
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\fonts\icomoon\icomoon.eot" />
-    <Content Include="Content\fonts\icomoon\icomoon.ttf" />
-    <Content Include="Content\fonts\icomoon\icomoon.woff" />
     <Content Include="Models\BDShop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BDShop.Context.cs</LastGenOutput>
@@ -300,6 +298,11 @@
     <Content Include="Models\BDShop.edmx.diagram">
       <DependentUpon>BDShop.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\fonts\fontawesome\FontAwesome.otf" />
+    <Content Include="Content\fonts\fontawesome\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\fontawesome\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome\fontawesome-webfont.eot" />
     <None Include="packages.config" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

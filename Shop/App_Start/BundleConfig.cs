@@ -11,8 +11,10 @@ namespace Shop
             // CSS
             bundles.Add(new StyleBundle("~/css/animate").Include(
                         "~/Content/css/animate.css"));
-            bundles.Add(new StyleBundle("~/css/material-icons").Include(
-                        "~/Content/css/material-icons.css"));
+
+            bundles.Add(new StyleBundle("~/css/fontawesome").Include(
+                        "~/Content/css/font-awesome.min.css"
+                        ));
 
             bundles.Add(new StyleBundle("~/css/bootstrap").Include(
                         "~/Content/css/bootstrap.min.css"));
