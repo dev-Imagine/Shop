@@ -21,11 +21,11 @@ namespace Shop.Controllers
         {
             return View();
         }
-        public ActionResult Product()
+        public ActionResult ProductList()
         {
             return View();
         }
-        public ActionResult Single()
+        public ActionResult ProductDetail()
         {
             return View();
         }

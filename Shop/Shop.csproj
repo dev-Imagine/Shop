@@ -307,9 +307,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\ProductList.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
-    <Content Include="Views\Home\Single.cshtml" />
+    <Content Include="Views\Home\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
