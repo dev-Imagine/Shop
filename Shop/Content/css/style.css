@@ -62,10 +62,10 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6, figure {
-  color: #000;
-  font-family: "Montserrat", Arial, sans-serif;
-  font-weight: 400;
-  margin: 0 0 20px 0;
+    color: #3c3c3c;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: 400;
+    margin: 0 0 20px 0;
 }
 
 ::-webkit-selection {
@@ -201,7 +201,6 @@ div a.cart span small {
 #fh5co-hero .flexslider .slider-text > .slider-text-inner .desc .price {
   font-size: 14px;
   letter-spacing: 3px;
-  display: block;
   margin-bottom: 20px;
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner .btn {
@@ -1311,4 +1310,8 @@ ul.dropdown-product {
         ul.dropdown-product li a:hover {
             text-decoration: none;
         }
+
+hr {
+    border-top: 1px solid rgb(209, 194, 134);
+}
 

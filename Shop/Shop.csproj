@@ -212,6 +212,7 @@
     <Content Include="Content\css\flexslider.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\owl.theme.default.min.css" />
+    <Content Include="Content\css\paymentMethodsAr.css" />
     <Content Include="Content\css\simple-sidebar.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\font-awesome.css" />
@@ -224,6 +225,8 @@
     <Content Include="Content\images\img_bg_5.jpg" />
     <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\loc.png" />
+    <Content Include="Content\images\MercadoEnvios.png" />
+    <Content Include="Content\images\MercadoPago.png" />
     <Content Include="Content\images\product-1.jpg" />
     <Content Include="Content\images\product-2.jpg" />
     <Content Include="Content\images\product-3.jpg" />
@@ -308,6 +311,7 @@
     <Content Include="Views\Home\ProductList.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

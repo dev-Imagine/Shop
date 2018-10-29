@@ -40,8 +40,6 @@
                     </div>
 
                 </form>
-
-                @*<div class="shopping-cart"><a data-toggle="collapse" href="#visualizarCarrito" aria-controls="visualizarCarrito" role="button" class="cart"><span><small>0</small><i class="fa fa-shopping-cart"></i></span></a></div>*@
                
                 <div class="shopping-cart dropdown" >
                     <a data-toggle="dropdown" id="visualizarCarrito" role="button" class="btn cart"><span><small>0</small><i class="fa fa-shopping-cart"></i></span></a>
@@ -55,7 +53,7 @@
                                     </div>
                                     <div class="u-text">
                                         <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
-                                        <p class="text-muted">$1200 c/u <a class="pull-right"><i class="fa fa-times"></i></a></p>
+                                        <p class="text-muted">$1200 c/u <a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
                                     </div>
                                 </div>
                             </li>
@@ -66,7 +64,7 @@
                                     </div>
                                     <div class="u-text">
                                         <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
-                                        <p class="text-muted">$1200 c/u <a class="pull-right"><i class="fa fa-times"></i></a></p>
+                                        <p class="text-muted">$1200 c/u <a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
                                     </div>
                                 </div>
                             </li>
@@ -77,56 +75,24 @@
                                     </div>
                                     <div class="u-text">
                                         <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
-                                        <p class="text-muted">$1200 c/u <a class="pull-right"><i class="fa fa-times"></i></a></p>
+                                        <p class="text-muted">$1200 c/u <a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
                                     </div>
                                 </div>
                             </li>
                             <li style="margin-bottom: 0px;">
                                 <button class="btn btn-primary btn-block" style="margin-top:0px; margin-bottom:0px;" type="submit">Comprar ahora</button>
                             </li>
+                            @*<li class="text-muted text-center">
+                                <p style="font-size:50px"><i class="fa fa-cart-arrow-down"></i></p>
+                                <p>Carrito vacío</p>
+                            </li>*@
                         </ul>
                     </div>
 
-                    @*<ul class="dropdown-menu container" style="width:270px" role="menu" aria-labelledby="visualizarCarrito">
-
-            <li role="presentation">
-                <div id="idProducto" class="row">
-                    <div class="col-12"><p style="margin-bottom:0px;">Producto 1, 1000, 2000000</p></div>
-                    <div class="col-12"><button style="width:100%;padding-top:0px;" class="btn-outline btn-danger">X</button></div>
-                </div>
-            </li>
-
-            <hr />
-            <li>
-                <div class="col-12"><button style="width:100%;padding-top:0px;" class="btn btn-success">Pagar</button></div>
-            </li>
-        </ul>*@
                 </div>
             </div>
         </nav>
-        @*<div class="row">
-            <div class="col">
-                <div class="collapse multi-collapse" id="visualizarCarrito">
-                    <div class="card card-body">
-                        <p class="text-center">PRODUCTOS</p>
-                        <hr style="width:100%; text-align:center" />
-
-                        <div class="row">
-                            <div class="col-10 fh5co-bg-section"> Producto 1</div>
-                            <div class="col-2">
-                               <button style="width:100%" class="btn-outline btn-danger">X</button>
-                            </div>
-                        </div>
-                        <hr style="width:100%" />
-
-                        <div class="">
-                            <button class="pull-right btn-outline btn-success">PAGAR</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-        </div>
+    </div>
 
 
  @RenderBody()
@@ -147,7 +113,7 @@
 
     @RenderSection("scripts", required: false)
 
-    <footer id="fh5co-footer" class="fh5co-bg-section" style="padding:4em 0" role="contentinfo">
+    <footer id="fh5co-footer" class="fh5co-bg-section animated fadeInUp" style="padding:4em 0" role="contentinfo">
         <div class="container">
             <div class="row row-pb-md">
                 <div class="col-5 col-md-4 fh5co-widget">
@@ -161,7 +127,7 @@
                         <li><a href="@Url.Action("About", "Home")">About</a></li>
                         <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
                         <li><a href="@Url.Action("Services", "Home")">Services</a></li>
-                        <li><a href="#">Help</a></li>
+                        <li><a href="@Url.Action("Cart", "Home")">Cart</a></li>
                         <li><a href="#">Terms</a></li>
                     </ul>
                 </div>

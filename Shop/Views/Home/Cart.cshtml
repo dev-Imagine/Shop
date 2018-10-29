@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/paymentMethodsAr.css" rel="stylesheet" />
+<br />
+<br />
+<div class="container-fluid">
+    <div class="row animate-box">
+        @*CARRITO*@
+        <div class="col-md-8 text-center">
+            <ul class="dropdown-product">
+                <li>
+                    <div class="dw-product-box">
+                        <div class="u-img text-center">
+                            <img class="img-fluid img-circle" style="width:100px; margin-bottom: 9px;" src="~/Content/images/product-2.jpg" alt="product">
+                        </div>
+                        <div class="u-text" style="vertical-align: text-top;">
+                            <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
+                            <p class="text-muted">$1200 c/u <span class="pull-right">$2400</span></p>
+                            <p class="text-muted">Camperas > Hombre<a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="dw-product-box">
+                        <div class="u-img text-center">
+                            <img class="img-fluid img-circle" style="width:100px; margin-bottom: 9px;" src="~/Content/images/product-2.jpg" alt="product">
+                        </div>
+                        <div class="u-text" style="vertical-align: text-top;">
+                            <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
+                            <p class="text-muted">$1200 c/u <span class="pull-right">$2400</span></p>
+                            <p class="text-muted">Camperas > Hombre<a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="dw-product-box">
+                        <div class="u-img text-center">
+                            <img class="img-fluid img-circle" style="width:100px; margin-bottom: 9px;" src="~/Content/images/product-2.jpg" alt="product">
+                        </div>
+                        <div class="u-text" style="vertical-align: text-top;">
+                            <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
+                            <p class="text-muted">$1200 c/u <span class="pull-right">$2400</span></p>
+                            <p class="text-muted">Camperas > Hombre<a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span class="price" style="color: #484848; margin-bottom: 10px;">Total $7200</span>
+                </li>
+
+                <li style="margin-bottom: 0px;">
+                    <button class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;font-size: 25px; width: 80%;" type="submit">Pagar</button>
+                    <br /><br /><br /><br />
+                </li>
+            </ul>
+        </div>
+        @*MEDIOS DE PAGO Y ENVIO*@
+        <div class="col-md-4">
+            <div class="text-center" style="margin-left: auto; margin-right: auto; width:95%;">
+                <h4><i class="fa fa-lock"></i> Paga de forma segura</h4>
+                <img class="img-fluid" style="max-width:150px" src="~/Content/images/MercadoPago.png" />
+                <br />
+                <p>Tarjeta de crédito en hasta 12 cuotas<br />Tarjeta de débito<br />Efectivo en puntos de pago</p>
+            </div>
+            <hr />
+            <form method="post">
+                <div class="text-center" style="margin-left: auto; margin-right: auto; width:95%;">
+                    <h4><i class="fa fa-archive"></i> Recibí tus productos en tu domicilio</h4>
+                    <img class="img-fluid" style="max-width:150px" src="~/Content/images/MercadoEnvios.png" />
+                    <br />
+                    <p style="margin-bottom:0px;" class="text-muted"> Calular costo de envío:</p>
+                </div>
+                <div class="input-group" style="margin-left: auto; margin-right: auto; width:95%;">
+                    <input type="text" class="form-control" placeholder="Código postal" aria-label="Código postal">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;" type="submit"><i style="font-size:22px" class="fa fa-truck"></i>&nbsp;&nbsp; Calcular</button>
+                    </div>
+                </div>
+                <p class="text-muted text-center">Costo: $320</p>
+            </form>
+            <hr />
+        </div>
+    </div>
+</div>
