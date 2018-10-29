@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,8 +20,8 @@
     @Scripts.Render("~/js/ModernizrJs")
 
 </head>
-<body>
-    <div class="container">
+<body >
+    <div class="container ">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="@Url.Action("Index", "Home")">Shop</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,15 +41,82 @@
 
                 </form>
 
-                <div class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="fa fa-shopping-cart"></i></span></a></div>
+                @*<div class="shopping-cart"><a data-toggle="collapse" href="#visualizarCarrito" aria-controls="visualizarCarrito" role="button" class="cart"><span><small>0</small><i class="fa fa-shopping-cart"></i></span></a></div>*@
+               
+                <div class="shopping-cart dropdown" style="float:left ; margin-right: 200px;">
+                    <a data-toggle="dropdown" id="visualizarCarrito" role="button" class="btn dropdown-toggle cart"><span><small>0</small><i class="fa fa-shopping-cart"></i></span></a>
 
+                    <ul class="dropdown-menu container" style="width:270px" role="menu" aria-labelledby="visualizarCarrito">
+                        <li role="presentation">
+                            <div id="idProducto" class="row">
+                                <div class="col-12"><p style="margin-bottom:0px;">Producto 1, 1000, 2000000</p></div>
+                                <div class="col-12"><button style="width:100%;padding-top:0px;" class="btn-outline btn-danger">X</button></div>
+                            </div>                            
+                        </li>
+                        <li role="presentation">
+                            <div id="idProducto" class="row">
+                                <div class="col-12"><p style="margin-bottom:0px;">Producto 1, 1000, 2000000</p></div>
+                                <div class="col-12"><button style="width:100%;padding-top:0px;" class="btn-outline btn-danger">X</button></div>
+                            </div>
+                        </li>
+                        <li role="presentation">
+                            <div id="idProducto" class="row">
+                                <div class="col-12"><p style="margin-bottom:0px;">Producto 1, 1000, 2000000</p></div>
+                                <div class="col-12"><button style="width:100%;padding-top:0px;" class="btn-outline btn-danger">X</button></div>
+                            </div>
+                        </li>
+                        <hr />
+                        <li>
+                            <div class="col-12"><button style="width:100%;padding-top:0px;" class="btn btn-success">Pagar</button></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
+        @*<div class="row">
+            <div class="col">
+                <div class="collapse multi-collapse" id="visualizarCarrito">
+                    <div class="card card-body">
+                        <p class="text-center">PRODUCTOS</p>
+                        <hr style="width:100%; text-align:center" />
+
+                        <div class="row">
+                            <div class="col-10 fh5co-bg-section"> Producto 1</div>
+                            <div class="col-2">
+                               <button style="width:100%" class="btn-outline btn-danger">X</button>
+                            </div>
+                        </div>
+                        <hr style="width:100%" />
+
+                        <div class="">
+                            <button class="pull-right btn-outline btn-success">PAGAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        </div>
+
+
+ @RenderBody()
+    
+       
+    
+
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="fa fa-angle-up"></i></a>
     </div>
 
-    @RenderBody()
 
-    <footer id="fh5co-footer" class="fh5co-bg-section" style="padding:4em 0;" role="contentinfo">
+    @Scripts.Render("~/js/jQuery")
+    @Scripts.Render("~/js/bootstrap")
+    @Scripts.Render("~/js/carousel")
+    @Scripts.Render("~/js/main")
+
+
+    @RenderSection("scripts", required: false)
+
+    <footer id="fh5co-footer" class="fh5co-bg-section" style="padding:4em 0" role="contentinfo">
         <div class="container">
             <div class="row row-pb-md">
                 <div class="col-5 col-md-4 fh5co-widget">
@@ -83,20 +151,10 @@
 
         </div>
     </footer>
-
-    <div class="gototop js-top">
-        <a href="#" class="js-gotop"><i class="fa fa-angle-up"></i></a>
-    </div>
-
-
-    @Scripts.Render("~/js/jQuery")
-    @Scripts.Render("~/js/bootstrap")
-    @Scripts.Render("~/js/carousel")
-    @Scripts.Render("~/js/main")
-
-
-    @RenderSection("scripts", required: false)
 </body>
+
+
+
 </html>
 
 
