@@ -3,199 +3,232 @@
     ViewBag.Title = "Lista de productos";
 }
 
-@*<div id="wrapper" class="toggled ">
 
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper" style="z-index:1;">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="#">
-                    Start Bootstrap
-                </a>
-            </li>
-            <li>
-                <a href="#">Dashboard</a>
-            </li>
-            <li>
-                <a href="#">Shortcuts</a>
-            </li>
-            <li>
-                <a href="#">Overview</a>
-            </li>
-            <li>
-                <a href="#">Events</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-    </div>
 
-    <!-- End sidebar -->
-    <!-- Page Content -->
-
-    <div id="page-content-wrapper">
-
-        
-
-    </div>
-</div>*@
-
-<div id="fh5co-product">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 col-lg-3 text-center animate-box">
-                <div class="product">
-                    <div class="product-grid" style="background-image:url(../../Content/images/product-1.jpg);">
-                        <div class="inner">
-                            <p>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="desc">
-                        <h3><a href="@Url.Action("ProductDetail", "Home")">Hauteville Concrete Rocking Chair</a></h3>
-                        <span class="price">$350</span>
-                    </div>
-                </div>
+    <div class="container-fluid h-100">
+            <div class="row h-100">
+                <aside class="col-12 col-md-2 p-0" style="background-color:#2d2d2d ">
+                    @*<nav class="navbar navbar-expand navbar-dark flex-md-column flex-row align-items-start py-2">
+            <div class="collapse navbar-collapse w-100">
+                <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" href="#"><i class="fa fa-book fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" href="#"><i class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" href="#"><i class="fa fa-star fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-0" href="#"><i class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-6 col-lg-3 text-center animate-box">
-                <div class="product">
-                    <div class="product-grid" style="background-image:url(../../Content/images/product-2.jpg);">
-                        <div class="inner">
-                            <p>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                            </p>
+        </nav>*@
+                    <nav class="navbar navbar-expand-lg navbar-dark flex-md-column flex-row align-items-start py-2">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            @*PONER OTRO ICONO*@
+                            <i style="font-size: 34px;" class="fa fa-filter"></i>
+                        </button>
+                        <div class="collapse navbar-collapse w-100" id="navbarNav" >
+                            <ul class="navbar-nav flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                                <li class="nav-item active">
+                                    <p class="nav-link" href="#">CATEGORÍAS</p>
+                                    <hr />
+                                    <div class="panel-group accordion-menu" id="accordion">
+                                        <p>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-telegram"></i>Camperas</a>
+                                            <i class="fa fa-arrow-down"></i>
+                                        </p>
+                                        <div id="collapseOne" class="collapse">
+                                            <ul class="">
+                                                <li><a href="#">Algodón</a></li>
+                                                <li><a href="#">Abrigo</a></li>
+                                                <li><a href="#">Deportivas</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="panel-group accordion-menu" id="accordion">
+                                        <p>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="fa fa-telegram"></i>Remeras</a>
+                                            <i class="fa fa-arrow-down"></i>
+                                        </p>
+                                        <div id="collapseTwo" class="collapse">
+                                            <ul class="">
+                                                <li><a href="#">Algodón</a></li>
+                                                <li><a href="#">Abrigo</a></li>
+                                                <li><a href="#">Deportivas</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item active">
+                                    <p class="nav-link" href="#">Ordenar por</p>
+                                    <hr />
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </nav>
+                </aside>
+                <main class="col bg-faded py-3">
+                    <div id="fh5co-product">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-3 text-center animate-box">
+                                    <div class="product">
+                                        <div class="product-grid" style="background-image:url(../../Content/images/product-1.jpg);">
+                                            <div class="inner">
+                                                <p>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Hauteville Concrete Rocking Chair</a></h3>
+                                            <span class="price">$350</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 text-center animate-box">
+                                    <div class="product">
+                                        <div class="product-grid" style="background-image:url(../../Content/images/product-2.jpg);">
+                                            <div class="inner">
+                                                <p>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Pavilion Speaker</a></h3>
+                                            <span class="price">$600</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 text-center animate-box">
+                                    <div class="product">
+                                        <div class="product-grid" style="background-image:url(../../Content/images/product-3.jpg);">
+                                            <div class="inner">
+                                                <p>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Ligomancer</a></h3>
+                                            <span class="price">$780</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 text-center animate-box">
+                                    <div class="product">
+                                        <div class="product-grid" style="background-image:url(../../Content/images/product-4.jpg);">
+                                            <div class="inner">
+                                                <p>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Alato Cabinet</a></h3>
+                                            <span class="price">$800</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 text-center animate-box">
+                                    <div class="product">
+                                        <div class="product-grid" style="background-image:url(../../Content/images/product-5.jpg);">
+                                            <div class="inner">
+                                                <p>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Earing Wireless</a></h3>
+                                            <span class="price">$100</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 text-center animate-box">
+                                    <div class="product">
+                                        <div class="product-grid" style="background-image:url(../../Content/images/product-6.jpg);">
+                                            <div class="inner">
+                                                <p>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Sculptural Coffee Table</a></h3>
+                                            <span class="price">$960</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 text-center animate-box">
+                                    <div class="product">
+                                        <div class="product-grid" style="background-image:url(../../Content/images/product-7.jpg);">
+                                            <div class="inner">
+                                                <p>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <h3><a href="@Url.Action("ProductDetail", "Home")">The WW Chair</a></h3>
+                                            <span class="price">$540</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 text-center animate-box">
+                                    <div class="product">
+                                        <div class="product-grid" style="background-image:url(../../Content/images/product-8.jpg);">
+                                            <div class="inner">
+                                                <p>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Himitsu Money Box</a></h3>
+                                            <span class="price">$55</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 text-center animate-box">
+                                    <div class="product">
+                                        <div class="product-grid" style="background-image:url(../../Content/images/product-9.jpg);">
+                                            <div class="inner">
+                                                <p>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Ariane Prin</a></h3>
+                                            <span class="price">$99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="desc">
-                        <h3><a href="@Url.Action("ProductDetail", "Home")">Pavilion Speaker</a></h3>
-                        <span class="price">$600</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 text-center animate-box">
-                <div class="product">
-                    <div class="product-grid" style="background-image:url(../../Content/images/product-3.jpg);">
-                        <div class="inner">
-                            <p>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="desc">
-                        <h3><a href="@Url.Action("ProductDetail", "Home")">Ligomancer</a></h3>
-                        <span class="price">$780</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 text-center animate-box">
-                <div class="product">
-                    <div class="product-grid" style="background-image:url(../../Content/images/product-4.jpg);">
-                        <div class="inner">
-                            <p>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="desc">
-                        <h3><a href="@Url.Action("ProductDetail", "Home")">Alato Cabinet</a></h3>
-                        <span class="price">$800</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 text-center animate-box">
-                <div class="product">
-                    <div class="product-grid" style="background-image:url(../../Content/images/product-5.jpg);">
-                        <div class="inner">
-                            <p>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="desc">
-                        <h3><a href="@Url.Action("ProductDetail", "Home")">Earing Wireless</a></h3>
-                        <span class="price">$100</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 text-center animate-box">
-                <div class="product">
-                    <div class="product-grid" style="background-image:url(../../Content/images/product-6.jpg);">
-                        <div class="inner">
-                            <p>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="desc">
-                        <h3><a href="@Url.Action("ProductDetail", "Home")">Sculptural Coffee Table</a></h3>
-                        <span class="price">$960</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 text-center animate-box">
-                <div class="product">
-                    <div class="product-grid" style="background-image:url(../../Content/images/product-7.jpg);">
-                        <div class="inner">
-                            <p>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="desc">
-                        <h3><a href="@Url.Action("ProductDetail", "Home")">The WW Chair</a></h3>
-                        <span class="price">$540</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 text-center animate-box">
-                <div class="product">
-                    <div class="product-grid" style="background-image:url(../../Content/images/product-8.jpg);">
-                        <div class="inner">
-                            <p>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="desc">
-                        <h3><a href="@Url.Action("ProductDetail", "Home")">Himitsu Money Box</a></h3>
-                        <span class="price">$55</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 text-center animate-box">
-                <div class="product">
-                    <div class="product-grid" style="background-image:url(../../Content/images/product-9.jpg);">
-                        <div class="inner">
-                            <p>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="desc">
-                        <h3><a href="@Url.Action("ProductDetail", "Home")">Ariane Prin</a></h3>
-                        <span class="price">$99</span>
-                    </div>
-                </div>
+                </main>
             </div>
         </div>
-    </div>
-</div>
+
+
+
+
 
 
