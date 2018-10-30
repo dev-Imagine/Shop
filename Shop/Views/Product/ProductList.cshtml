@@ -75,8 +75,8 @@
                 <main class="col bg-faded py-3">
                     <div id="fh5co-product">
                         <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-3 text-center animate-box">
+                            <div class="row" id="listProduct">
+                                @*<div class="col-md-6 col-lg-3 text-center animate-box">
                                     <div class="product">
                                         <div class="product-grid" style="background-image:url(../../Content/images/product-1.jpg);">
                                             <div class="inner">
@@ -219,6 +219,9 @@
                                             <span class="price">$99</span>
                                         </div>
                                     </div>
+                                </div>*@
+                                <div id="progress" style="display:none">
+                                    <h4>Loading...</h4>
                                 </div>
                             </div>
                         </div>
@@ -227,8 +230,49 @@
             </div>
         </div>
 
+@section scripts{
+<script>
+    var pageSize = 3;
+    var pageIndex = 0;
+
+    $(document).ready(function () {
+        GetData();
+        $(window).scroll(function () {
+            if ($(window).scrollTop() ==
+                $(document).height() - $(window).height()) {
+                GetData();
+            }
+        });
+    });
+
+    function GetData() {
+        $.ajax({
+            type: 'GET',
+            url: "@Url.Action("_ProductList", "Product")",
+            data: { "pageindex": pageIndex, "pagesize": pageSize  },
+            success: function (data) {
+                if (data != null) {
+                    $('#listProduct').append(data);
+                    pageIndex++;
+                }
+            },
 
 
+            beforeSend: function () {
+                $("#progress").show();
+            },
+            complete: function () {
+                $("#progress").hide();
+            },
+            error: function () {
+                alert("Ocurrio un error y no se pudieron optener algunos articulos.");
+            }
+        });
+        
+    }
+
+</script>
+    }
 
 
 

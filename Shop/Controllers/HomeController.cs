@@ -21,14 +21,7 @@ namespace Shop.Controllers
         {
             return View();
         }
-        public ActionResult ProductList()
-        {
-            return View();
-        }
-        public ActionResult ProductDetail()
-        {
-            return View();
-        }
+      
         public ActionResult Services()
         {
             return View();
