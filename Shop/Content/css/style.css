@@ -624,17 +624,17 @@ div a.cart span small {
   transition: 0.3s;
 }
 .product .product-grid .sale {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 10px;
-  z-index: 100;
-  background: #d1c286;
-  color: #fff;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    z-index: 100;
+    background: #2d2d2d;
+    color: #d1c286;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
 }
 .product .product-grid .inner {
   display: table;
@@ -657,13 +657,14 @@ div a.cart span small {
   vertical-align: middle;
 }
 .product .product-grid .inner p .icon {
-  padding: 7px 10px;
-  color: #fff;
-  background: #d1c286;
+    padding: 7px 10px;
+    color: #d1c286;
+    background: #2d2d2d;
+    font-size: 18px;
 }
 .product .product-grid .inner p .icon:hover, .product .product-grid .inner p .icon:focus {
-  color: #d1c286;
-  background: #fff;
+    color: #2d2d2d;
+    background: #d1c286;
 }
 .product .desc h3 {
   font-size: 14px;
@@ -1322,4 +1323,20 @@ hr {
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
+.blog .carousel-indicators {
+    left: 0;
+    top: auto;
+    bottom: -40px;
+}
 
+    /* The colour of the indicators */
+    .blog .carousel-indicators li {
+        background: #a3a3a3;
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+    }
+
+    .blog .carousel-indicators .active {
+        background: #707070;
+    }

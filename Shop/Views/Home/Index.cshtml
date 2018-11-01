@@ -66,6 +66,88 @@
     </div>
 </aside>
 
+<div class="container">
+    <div class="row blog">
+        <div class="col-md-12">
+            <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+                @*<ol class="carousel-indicators">
+                        <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#blogCarousel" data-slide-to="1"></li>
+                    </ol>*@
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <!--.item-->
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <img src="http://placehold.it/250x250" alt="Image" style="max-width: 200px;">
+                                    <p style="text-align:center">REMERAS</p>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <img src="http://placehold.it/250x250" alt="Image" style="max-width: 200px;">
+                                    <p style="text-align:center">PANTALONES</p>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <img src="http://placehold.it/250x250" alt="Image" style="max-width: 200px;">
+                                    <p style="text-align:center">CAMPERAS</p>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <img src="http://placehold.it/250x250" alt="Image" style="max-width: 200px;">
+                                    <p style="text-align:center">BUZOS</p>
+                                </a>
+                            </div>
+                        </div>
+                        <!--.row-->
+                    </div>
+                    <!--.item-->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <img src="http://placehold.it/250x250" alt="Image" style="max-width: 200px;">
+                                    <p style="text-align:center">CAMISAS</p>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <img src="http://placehold.it/250x250" alt="Image" style="max-width: 200px;">
+                                    <p style="text-align:center">ZAPATILLAS</p>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <img src="http://placehold.it/250x250" alt="Image" style="max-width: 200px;">
+                                    <p style="text-align:center">ZAPATOS</p>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <img src="http://placehold.it/250x250" alt="Image" style="max-width: 200px;">
+                                    <p style="text-align:center">GORRAS</p>
+                                </a>
+                            </div>
+                        </div>
+                        <!--.row-->
+                    </div>
+                </div>
+                <!--.carousel-inner-->
+            </div>
+            <div class="col-12" style="font-size:40px;">
+                <a class="pull-left" style="color:#2d2d2d" href="#blogCarousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                <a class="pull-right" style="color:#2d2d2d" href="#blogCarousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+            </div>
+            <!--.Carousel-->
+        </div>
+    </div>
+</div>
+
 <div id="fh5co-product" class="fh5co-bg-section">
     <div class="container">
         <div class="row animate-box">
@@ -343,3 +425,11 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+    <script>
+        $('#blogCarousel').carousel({
+            interval: 10000
+        });
+    </script>
+    }

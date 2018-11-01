@@ -16,7 +16,7 @@ namespace Shop.Models
     {
         public int idImagen { get; set; }
         public int idProducto { get; set; }
-        public string ruta { get; set; }
+        public string archivo { get; set; }
         public bool principal { get; set; }
     
         public virtual Producto Producto { get; set; }

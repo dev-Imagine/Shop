@@ -17,10 +17,14 @@ namespace Shop.Controllers
             srvProduct sPro = new srvProduct();
             ViewBag.cantProductos = sPro.TotalProductosBusqueda(stSearch);
             ViewBag.search = stSearch;
+            srvCategories sCategoria = new srvCategories();
+            ViewBag.lstCategorias = sCategoria.ObtenerCategorias();
             return View();
         }
-        public ActionResult ProductDetail()
+        public ActionResult ProductDetail(int idProducto)
         {
+            srvProduct sProd = new srvProduct();
+            ViewBag.oProducto = sProd.obtenerProducto(idProducto);
             return View();
         }
         

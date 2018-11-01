@@ -27,7 +27,6 @@ namespace Shop.Models
     
         public virtual DbSet<Categoria> Categoria { get; set; }
         public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
-        public virtual DbSet<Imagen> Imagen { get; set; }
         public virtual DbSet<Localidad> Localidad { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Provincia> Provincia { get; set; }
@@ -35,5 +34,6 @@ namespace Shop.Models
         public virtual DbSet<Suscriptor> Suscriptor { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
+        public virtual DbSet<Imagen> Imagen { get; set; }
     }
 }

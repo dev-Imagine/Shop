@@ -24,7 +24,7 @@
     </Key>
     <Property Name="idImagen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idProducto" Type="int" Nullable="false" />
-    <Property Name="ruta" Type="varchar(max)" Nullable="false" />
+    <Property Name="archivo" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="principal" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Localidad">

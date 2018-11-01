@@ -207,6 +207,7 @@
       <DependentUpon>BDShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\srvCategories.cs" />
     <Compile Include="Services\srvProduct.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +222,7 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\image-not-found.png" />
     <Content Include="Content\images\img_bg_1.jpg" />
     <Content Include="Content\images\img_bg_2.jpg" />
     <Content Include="Content\images\img_bg_3.jpg" />
@@ -265,6 +267,20 @@
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <Content Include="Images\Product\img_bg_1.jpg" />
+    <Content Include="Images\Product\img_bg_2.jpg" />
+    <Content Include="Images\Product\img_bg_3.jpg" />
+    <Content Include="Images\Product\img_bg_4.jpg" />
+    <Content Include="Images\Product\img_bg_5.jpg" />
+    <Content Include="Images\Product\product-1.jpg" />
+    <Content Include="Images\Product\product-2.jpg" />
+    <Content Include="Images\Product\product-3.jpg" />
+    <Content Include="Images\Product\product-4.jpg" />
+    <Content Include="Images\Product\product-5.jpg" />
+    <Content Include="Images\Product\product-6.jpg" />
+    <Content Include="Images\Product\product-7.jpg" />
+    <Content Include="Images\Product\product-8.jpg" />
+    <Content Include="Images\Product\product-9.jpg" />
     <Content Include="Models\BDShop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BDShop.Context.cs</LastGenOutput>

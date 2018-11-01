@@ -1,6 +1,7 @@
 ﻿
 @{
-    ViewBag.Title = "Sinigle";
+    Shop.Models.Producto oPro = ViewBag.oProducto;
+    ViewBag.Title = oPro.nombre;
 }
 
 <div>
@@ -8,48 +9,24 @@
         <div class="row">
             <div class="col-md-6 animate-box">
                 <div class="owl-carousel owl-carousel-fullwidth product-carousel">
+                    @foreach (Shop.Models.Imagen oImagen in oPro.Imagen)
+                    {
                     <div class="item">
                         <div class="active text-center">
                             <figure>
-                                <img src="~/Content/images/product-single-1.jpg" alt="Product">
+                                <img class="img-fluid" style="max-height:420px;" src="~/Images/Product/@oImagen.archivo" onerror="this.src='../Content/images/image-not-found.png';" alt="Product">
                             </figure>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="active text-center">
-                            <figure>
-                                <img src="~/Content/images/product-single-2.jpg" alt="Product">
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="active text-center">
-                            <figure>
-                                <img src="~/Content/images/product-single-3.jpg" alt="Product">
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="active text-center">
-                            <figure>
-                                <img src="~/Content/images/product-single-4.jpg" alt="Product">
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="active text-center">
-                            <figure>
-                                <img src="~/Content/images/product-single-5.jpg" alt="Product">
-                            </figure>
-                        </div>
-                    </div>
+                    }
+
                 </div>
             </div>
 
             <div class="col-md-6 animate-box text-center">
-                <h2>Hauteville Rocking Chair</h2>
-                <span class="price text-center">SRP: $350</span>
-                <p>Paragraph placeat quis fugiat provident veritatis quia iure a debitis adipisci dignissimos consectetur magni quas eius nobis reprehenderit soluta eligendi quo reiciendis fugit? Veritatis tenetur odio delectus quibusdam officiis est.</p>
+                <h2>@oPro.nombre</h2>
+                <span class="price text-center">ARS$ @Convert.ToInt32(oPro.precio)</span>
+                <p>@oPro.descripcion</p>
 
                 <p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
 
@@ -63,7 +40,8 @@
                         <p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis</p>
                     </div>
                 </div>
-                <a href="#" class="btn btn-primary btn-block btn-outline btn-lg" style="font-size: 25px;">Add to Cart</a>
+                <p>@oPro.SubCategoria.Categoria.nombre > @oPro.SubCategoria.nombre</p>
+                <a href="#" class="btn btn-primary btn-block btn-lg" style="font-size: 25px;">Add to Cart</a>
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Lista de productos";
+    List<Shop.Models.Categoria> lstCatgoria = ViewBag.lstCategorias;
 }
 
 
@@ -19,33 +20,26 @@
                                 <li class="nav-item active">
                                     <p class="nav-link" href="#">CATEGORÍAS</p>
                                     <hr />
-                                    <div class="panel-group accordion-menu" id="accordion">
-                                        <p>
-                                            <a href="#">Camperas</a>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" ><i class="pull-right fa fa-caret-down"></i></a>
-                                        </p>
-                                        <div id="collapseOne" class="collapse">
-                                            <ul class="">
-                                                <li><a href="#">Algodón</a></li>
-                                                <li><a href="#">Abrigo</a></li>
-                                                <li><a href="#">Deportivas</a></li>
-                                            </ul>
+
+                                    @foreach (Shop.Models.Categoria oCategoria in lstCatgoria)
+                                    {
+                                        <div class="panel-group accordion-menu" id="accordion">
+                                            <p>
+                                                <a href="#">@oCategoria.nombre</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#Collapse_@oCategoria.idCategoria"><i class="pull-right fa fa-caret-down"></i></a>
+
+                                            </p>
+                                            <div id="Collapse_@oCategoria.idCategoria" class="collapse">
+                                                <ul style="list-style-type: none">
+                                                    @foreach (Shop.Models.SubCategoria oSubcategoria in oCategoria.SubCategoria)
+	                                                {
+                                                        <li><a href="#">@oSubcategoria.nombre</a></li>
+	                                                }
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="panel-group accordion-menu" id="accordion">
-                                        <p>
-                                            <a href="#">Remeras</a>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="pull-right fa fa-caret-down"></i></a>
-                                            
-                                        </p>
-                                        <div id="collapseTwo" class="collapse">
-                                            <ul class="">
-                                                <li><a href="#">Algodón</a></li>
-                                                <li><a href="#">Abrigo</a></li>
-                                                <li><a href="#">Deportivas</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    }
+
                                 </li>
                                 <li class="nav-item active">
                                     <p class="nav-link" href="#">Ordenar por</p>

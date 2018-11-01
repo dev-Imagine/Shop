@@ -18,7 +18,7 @@ namespace Shop.Services
                 List<Producto> lstProductos = bd.Producto.Where(x=> (x.SubCategoria.nombre + x.SubCategoria.Categoria.nombre + x.nombre).ToUpper().Contains(stSearch.ToUpper())).ToList().Skip(pageIndex * pageSize).Take(pageSize).ToList();
                 foreach (Producto opro in lstProductos)
                 {
-                    opro.Imagen.First();
+                    opro.Imagen.Where(x => x.principal = true).FirstOrDefault();
                 }
                 return lstProductos;
             }
@@ -31,6 +31,23 @@ namespace Shop.Services
                 return bd.Producto.Where(x => (x.SubCategoria.nombre + x.SubCategoria.Categoria.nombre + x.nombre).ToUpper().Contains(stSearch.ToUpper())).Count();
             }
 
+        }
+        public Producto obtenerProducto(int idProducto)
+        {
+            using (DB_A363ED_ShopEntities bd = new DB_A363ED_ShopEntities())
+            {
+                try
+                {
+                    Producto oPro = bd.Producto.Where(x => x.idProducto == idProducto).FirstOrDefault();
+                    oPro.Imagen.ToList();
+                    int i = oPro.SubCategoria.Categoria.idCategoria;
+                    return oPro;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
         }
     }
 }
