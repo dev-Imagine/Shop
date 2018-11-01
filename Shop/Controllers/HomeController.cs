@@ -26,9 +26,5 @@ namespace Shop.Controllers
         {
             return View();
         }
-        public ActionResult Cart()
-        {
-            return View();
-        }
     }
 }

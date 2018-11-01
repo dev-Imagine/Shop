@@ -1,9 +1,10 @@
-﻿@{ 
-    List<Shop.Models.Producto> lstProductos = new List<Shop.Models.Producto>();
-    lstProductos = (List<Shop.Models.Producto>)Session["lstProductos"];
+﻿@{
+    List<Shop.Models.Producto> lstProductos = (List<Shop.Models.Producto>)ViewBag.lstProductos;
+    bool complete = ViewBag.complete;
 }
-
-    @foreach (Shop.Models.Producto oPro in lstProductos)
+@if (!complete)
+{
+    foreach (Shop.Models.Producto oPro in lstProductos)
     {
         <div class="col-md-6 col-lg-3 text-center animate-box" style="opacity:100">
             <div class="product">
@@ -17,9 +18,10 @@
                 </div>
                 <div class="desc">
                     <h3><a href="@Url.Action("ProductDetail", "Product")">@oPro.nombre</a></h3>
-                    <span class="price">$350</span>
+                    <span class="price">$@Convert.ToInt32(oPro.precio)</span>
                 </div>
             </div>
         </div>
     }
+}
 

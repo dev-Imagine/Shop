@@ -10,28 +10,36 @@ namespace Shop.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
-        public ActionResult ProductList()
+        // VISTAS
+        [HttpPost]
+        public ActionResult ProductList(string stSearch)
         {
-            ViewBag.lstProductos = "";
+            srvProduct sPro = new srvProduct();
+            ViewBag.cantProductos = sPro.TotalProductosBusqueda(stSearch);
+            ViewBag.search = stSearch;
             return View();
         }
         public ActionResult ProductDetail()
         {
             return View();
         }
-        public PartialViewResult _ProductList(int pageIndex, int pageSize)
+        
+        // VISTAS PARCIALES
+
+        public ActionResult _ProductList(int pageIndex, int pageSize, string stSearch)
         {
             srvProduct sPro = new srvProduct();
-            if (Session["lstProductos"] == null)
+            int cantProductos = sPro.TotalProductosBusqueda(stSearch);
+            if (pageIndex * pageSize >= cantProductos)
             {
-                Session["lstProductos"] = sPro.obtenerProductos(pageIndex, pageSize);
+                ViewBag.complete = true;
+                ViewBag.lstProductos = new List<Producto>();
             }
             else
             {
-                Session["lstProductos"] = sPro.obtenerProductos(pageIndex, pageSize, (List<Producto>)Session["lstProductos"]);
+                ViewBag.complete = false;
+                ViewBag.lstProductos = sPro.obtenerProductos(pageIndex, pageSize, stSearch);
             }
-           
             return PartialView();
         }
     }

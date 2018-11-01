@@ -30,10 +30,10 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <form class="form-inline my-2 my-lg-0 mr-auto w-100">
+                <form action="@Url.Action("ProductList","Product")" method="post" class="form-inline my-2 my-lg-0 mr-auto w-100" autocomplete="off">
 
                     <div class="input-group" style="margin-left: auto; margin-right: auto; width:95%;">
-                        <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar">
+                        <input type="text" minlength=4 required class="form-control" name="stSearch" placeholder="Buscar..." aria-label="Buscar">
                         <div class="input-group-append">
                             <button class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;" type="submit"><i class="fa fa-search"></i></button>
                         </div>
@@ -127,7 +127,7 @@
                         <li><a href="@Url.Action("About", "Home")">About</a></li>
                         <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
                         <li><a href="@Url.Action("Services", "Home")">Services</a></li>
-                        <li><a href="@Url.Action("Cart", "Home")">Cart</a></li>
+                        <li><a href="@Url.Action("Cart", "Sell")">Cart</a></li>
                         <li><a href="#">Terms</a></li>
                     </ul>
                 </div>

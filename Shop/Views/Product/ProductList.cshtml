@@ -8,38 +8,21 @@
     <div class="container-fluid h-100">
             <div class="row h-100">
                 <aside class="col-12 col-md-2 p-0" style="background-color:#2d2d2d ">
-                    @*<nav class="navbar navbar-expand navbar-dark flex-md-column flex-row align-items-start py-2">
-            <div class="collapse navbar-collapse w-100">
-                <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-                    <li class="nav-item">
-                        <a class="nav-link pl-0" href="#"><i class="fa fa-book fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-0" href="#"><i class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-0" href="#"><i class="fa fa-star fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-0" href="#"><i class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">Link</span></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>*@
                     <nav class="navbar navbar-expand-lg navbar-dark flex-md-column flex-row align-items-start py-2">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             @*PONER OTRO ICONO*@
+                            
                             <i style="font-size: 34px;" class="fa fa-filter"></i>
                         </button>
                         <div class="collapse navbar-collapse w-100" id="navbarNav" >
-                            <ul class="navbar-nav flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                            <ul class="navbar-nav flex-md-column navbar-nav w-100 justify-content-between">
                                 <li class="nav-item active">
                                     <p class="nav-link" href="#">CATEGORÍAS</p>
                                     <hr />
                                     <div class="panel-group accordion-menu" id="accordion">
                                         <p>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="fa fa-telegram"></i>Camperas</a>
-                                            <i class="fa fa-arrow-down"></i>
+                                            <a href="#">Camperas</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" ><i class="pull-right fa fa-caret-down"></i></a>
                                         </p>
                                         <div id="collapseOne" class="collapse">
                                             <ul class="">
@@ -51,8 +34,9 @@
                                     </div>
                                     <div class="panel-group accordion-menu" id="accordion">
                                         <p>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="fa fa-telegram"></i>Remeras</a>
-                                            <i class="fa fa-arrow-down"></i>
+                                            <a href="#">Remeras</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="pull-right fa fa-caret-down"></i></a>
+                                            
                                         </p>
                                         <div id="collapseTwo" class="collapse">
                                             <ul class="">
@@ -76,154 +60,11 @@
                     <div id="fh5co-product">
                         <div class="container-fluid">
                             <div class="row" id="listProduct">
-                                @*<div class="col-md-6 col-lg-3 text-center animate-box">
-                                    <div class="product">
-                                        <div class="product-grid" style="background-image:url(../../Content/images/product-1.jpg);">
-                                            <div class="inner">
-                                                <p>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="desc">
-                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Hauteville Concrete Rocking Chair</a></h3>
-                                            <span class="price">$350</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3 text-center animate-box">
-                                    <div class="product">
-                                        <div class="product-grid" style="background-image:url(../../Content/images/product-2.jpg);">
-                                            <div class="inner">
-                                                <p>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="desc">
-                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Pavilion Speaker</a></h3>
-                                            <span class="price">$600</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3 text-center animate-box">
-                                    <div class="product">
-                                        <div class="product-grid" style="background-image:url(../../Content/images/product-3.jpg);">
-                                            <div class="inner">
-                                                <p>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="desc">
-                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Ligomancer</a></h3>
-                                            <span class="price">$780</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3 text-center animate-box">
-                                    <div class="product">
-                                        <div class="product-grid" style="background-image:url(../../Content/images/product-4.jpg);">
-                                            <div class="inner">
-                                                <p>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="desc">
-                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Alato Cabinet</a></h3>
-                                            <span class="price">$800</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3 text-center animate-box">
-                                    <div class="product">
-                                        <div class="product-grid" style="background-image:url(../../Content/images/product-5.jpg);">
-                                            <div class="inner">
-                                                <p>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="desc">
-                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Earing Wireless</a></h3>
-                                            <span class="price">$100</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3 text-center animate-box">
-                                    <div class="product">
-                                        <div class="product-grid" style="background-image:url(../../Content/images/product-6.jpg);">
-                                            <div class="inner">
-                                                <p>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="desc">
-                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Sculptural Coffee Table</a></h3>
-                                            <span class="price">$960</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3 text-center animate-box">
-                                    <div class="product">
-                                        <div class="product-grid" style="background-image:url(../../Content/images/product-7.jpg);">
-                                            <div class="inner">
-                                                <p>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="desc">
-                                            <h3><a href="@Url.Action("ProductDetail", "Home")">The WW Chair</a></h3>
-                                            <span class="price">$540</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3 text-center animate-box">
-                                    <div class="product">
-                                        <div class="product-grid" style="background-image:url(../../Content/images/product-8.jpg);">
-                                            <div class="inner">
-                                                <p>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="desc">
-                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Himitsu Money Box</a></h3>
-                                            <span class="price">$55</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3 text-center animate-box">
-                                    <div class="product">
-                                        <div class="product-grid" style="background-image:url(../../Content/images/product-9.jpg);">
-                                            <div class="inner">
-                                                <p>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-shopping-cart"></i></a>
-                                                    <a href="@Url.Action("ProductDetail", "Home")" class="icon"><i class="fa fa-eye"></i></a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="desc">
-                                            <h3><a href="@Url.Action("ProductDetail", "Home")">Ariane Prin</a></h3>
-                                            <span class="price">$99</span>
-                                        </div>
-                                    </div>
-                                </div>*@
-                                <div id="progress" style="display:none">
-                                    <h4>Loading...</h4>
-                                </div>
+                                @Html.Action("_ProductList", "Product", new { pageIndex = 0, pageSize = 3, stSearch = ViewBag.search })
+
                             </div>
+                                <div id="progress" class="row" style="display:none;min-height:400px; width: 100%; height: 100%; background: url(../../Content/images/loader.gif) center no-repeat #fff;">
+                                </div>
                         </div>
                     </div>
                 </main>
@@ -233,13 +74,17 @@
 @section scripts{
 <script>
     var pageSize = 3;
-    var pageIndex = 0;
+    var pageIndex = 1;
+    var totalProduct = @ViewBag.cantProductos;
+    var loading = false;
 
     $(document).ready(function () {
-        GetData();
+
         $(window).scroll(function () {
-            if ($(window).scrollTop() ==
-                $(document).height() - $(window).height()) {
+            if ($(window).scrollTop() > $(document).height() - $(window).height() - 300) {
+                if ((pageSize * pageIndex) >= totalProduct || loading == true) {
+                    return;
+                }
                 GetData();
             }
         });
@@ -249,9 +94,9 @@
         $.ajax({
             type: 'GET',
             url: "@Url.Action("_ProductList", "Product")",
-            data: { "pageindex": pageIndex, "pagesize": pageSize  },
+            data: { "pageindex": pageIndex, "pagesize": pageSize, "stSearch":'@ViewBag.search'  },
             success: function (data) {
-                if (data != null) {
+                if (data != null && data != '') {
                     $('#listProduct').append(data);
                     pageIndex++;
                 }
@@ -259,10 +104,15 @@
 
 
             beforeSend: function () {
+                loading = true;
                 $("#progress").show();
             },
             complete: function () {
+                loading = false;
                 $("#progress").hide();
+                if ((pageSize * pageIndex) >= totalProduct) {
+                    $('#listProduct').append('<div class="col-12"><br/><hr style="width: 30%; border-top-width: 2px;" /></div>');
+                }
             },
             error: function () {
                 alert("Ocurrio un error y no se pudieron optener algunos articulos.");

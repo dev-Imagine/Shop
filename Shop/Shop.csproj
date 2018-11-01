@@ -157,6 +157,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SellController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -313,7 +314,7 @@
     <Content Include="Views\Product\ProductList.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
-    <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Sell\Cart.cshtml" />
     <Content Include="Views\Product\_ProductList.cshtml" />
   </ItemGroup>
   <ItemGroup>
