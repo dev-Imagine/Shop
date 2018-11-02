@@ -1323,20 +1323,56 @@ hr {
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-.blog .carousel-indicators {
-    left: 0;
-    top: auto;
-    bottom: -40px;
+.carousel-wrap {
+    margin: 90px auto;
+    padding: 0 5%;
+    width: 80%;
+    position: relative;
 }
 
-    /* The colour of the indicators */
-    .blog .carousel-indicators li {
-        background: #a3a3a3;
-        border-radius: 50%;
-        width: 8px;
-        height: 8px;
-    }
+.owl-carousel .item {
+    position: relative;
+    z-index: 100;
+    -webkit-backface-visibility: hidden;
+    text-align: center !important;
+}
 
-    .blog .carousel-indicators .active {
-        background: #707070;
-    }
+.owl-carousel .item i {
+    font-size: 100px;
+    margin-bottom:10px;
+}
+
+.owl-carousel .item p {
+    font-size: 25px;
+    margin: 0px;
+}
+
+
+
+.owl-nav > div {
+    margin-top: -26px;
+    position: absolute;
+    top: 50%;
+    color: #cdcbcd;
+}
+
+.owl-nav i {
+    font-size: 52px;
+}
+
+.owl-nav .owl-prev {
+    left: -30px !important;
+    color: #2d2d2d !important;
+    margin: -30px !important;
+    background: none !important;
+}
+
+.owl-nav .owl-next {
+    right: -30px !important;
+    color: #2d2d2d !important;
+    margin: -30px !important;
+    background: none !important;
+}
+#carrouselCategories .owl-dot{
+    display:none !important;
+}
