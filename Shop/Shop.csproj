@@ -267,6 +267,8 @@
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <Content Include="Images\Categories\pantalon.png" />
+    <Content Include="Images\Categories\remera.png" />
     <Content Include="Images\Product\img_bg_1.jpg" />
     <Content Include="Images\Product\img_bg_2.jpg" />
     <Content Include="Images\Product\img_bg_3.jpg" />

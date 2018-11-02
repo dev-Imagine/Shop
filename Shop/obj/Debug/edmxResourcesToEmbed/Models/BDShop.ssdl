@@ -6,6 +6,7 @@
     </Key>
     <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombreImagen" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="DetalleVenta">
     <Key>

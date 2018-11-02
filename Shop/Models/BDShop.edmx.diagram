@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ac6ac8995437422eb3abbb88a6f5597e" Name="Diagram1" >
-        <EntityTypeShape EntityType="DB_A363ED_ShopModel.Categoria" Width="1.5" PointX="0.75" PointY="2.875" />
         <EntityTypeShape EntityType="DB_A363ED_ShopModel.DetalleVenta" Width="1.5" PointX="7.5" PointY="2.5" />
         <EntityTypeShape EntityType="DB_A363ED_ShopModel.Localidad" Width="1.5" PointX="3" PointY="7.75" />
         <EntityTypeShape EntityType="DB_A363ED_ShopModel.Producto" Width="1.5" PointX="5.25" PointY="2.125" />
@@ -14,7 +13,6 @@
         <EntityTypeShape EntityType="DB_A363ED_ShopModel.Suscriptor" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="DB_A363ED_ShopModel.Usuario" Width="1.5" PointX="9.75" PointY="3.75" />
         <EntityTypeShape EntityType="DB_A363ED_ShopModel.Venta" Width="1.5" PointX="5.25" PointY="7" />
-        <AssociationConnector Association="DB_A363ED_ShopModel.FK_SubCategoria_Categoria" />
         <AssociationConnector Association="DB_A363ED_ShopModel.FK_DetalleVenta_Producto" />
         <AssociationConnector Association="DB_A363ED_ShopModel.FK_DetalleVenta_Venta" />
         <AssociationConnector Association="DB_A363ED_ShopModel.FK_Localidad_Provincia" />
@@ -22,6 +20,8 @@
         <AssociationConnector Association="DB_A363ED_ShopModel.FK_Producto_SubCategoria" />
         <EntityTypeShape EntityType="DB_A363ED_ShopModel.Imagen" Width="1.5" PointX="7.5" PointY="6.75" />
         <AssociationConnector Association="DB_A363ED_ShopModel.FK_Imagen_Producto" />
+        <EntityTypeShape EntityType="DB_A363ED_ShopModel.Categoria" Width="1.5" PointX="0.75" PointY="2.875" />
+        <AssociationConnector Association="DB_A363ED_ShopModel.FK_SubCategoria_Categoria" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

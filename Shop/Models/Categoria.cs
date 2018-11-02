@@ -22,6 +22,7 @@ namespace Shop.Models
     
         public int idCategoria { get; set; }
         public string nombre { get; set; }
+        public string nombreImagen { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubCategoria> SubCategoria { get; set; }

@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DB_A363ED_ShopModelStoreContainer" CdmEntityContainer="DB_A363ED_ShopEntities">
-    <EntitySetMapping Name="Categoria">
-      <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Categoria">
-        <MappingFragment StoreEntitySet="Categoria">
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="DetalleVenta">
       <EntityTypeMapping TypeName="DB_A363ED_ShopModel.DetalleVenta">
         <MappingFragment StoreEntitySet="DetalleVenta">
@@ -104,6 +96,15 @@
           <ScalarProperty Name="archivo" ColumnName="archivo" />
           <ScalarProperty Name="idProducto" ColumnName="idProducto" />
           <ScalarProperty Name="idImagen" ColumnName="idImagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="nombreImagen" ColumnName="nombreImagen" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

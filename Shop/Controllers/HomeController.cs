@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop.Services;
+using Shop.Models;
 
 namespace Shop.Controllers
 {
@@ -10,7 +12,10 @@ namespace Shop.Controllers
     {
         public ActionResult Index()
         {
+            srvCategories sCat = new srvCategories();
+            ViewBag.lstCategories = sCat.ObtenerCategorias();
             return View();
+            
         }
         public ActionResult About()
         {

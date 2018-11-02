@@ -11,6 +11,7 @@
           </Key>
           <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombreImagen" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="DetalleVenta">
           <Key>
@@ -230,7 +231,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="DB_A363ED_ShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DB_A363ED_ShopEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="Categoria" EntityType="DB_A363ED_ShopModel.Categoria" />
           <EntitySet Name="DetalleVenta" EntityType="DB_A363ED_ShopModel.DetalleVenta" />
           <EntitySet Name="Localidad" EntityType="DB_A363ED_ShopModel.Localidad" />
           <EntitySet Name="Producto" EntityType="DB_A363ED_ShopModel.Producto" />
@@ -239,10 +239,6 @@
           <EntitySet Name="Suscriptor" EntityType="DB_A363ED_ShopModel.Suscriptor" />
           <EntitySet Name="Usuario" EntityType="DB_A363ED_ShopModel.Usuario" />
           <EntitySet Name="Venta" EntityType="DB_A363ED_ShopModel.Venta" />
-          <AssociationSet Name="FK_SubCategoria_Categoria" Association="DB_A363ED_ShopModel.FK_SubCategoria_Categoria">
-            <End Role="Categoria" EntitySet="Categoria" />
-            <End Role="SubCategoria" EntitySet="SubCategoria" />
-          </AssociationSet>
           <AssociationSet Name="FK_DetalleVenta_Producto" Association="DB_A363ED_ShopModel.FK_DetalleVenta_Producto">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="DetalleVenta" EntitySet="DetalleVenta" />
@@ -268,15 +264,12 @@
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Imagen" EntitySet="Imagen" />
           </AssociationSet>
+          <EntitySet Name="Categoria" EntityType="DB_A363ED_ShopModel.Categoria" />
+          <AssociationSet Name="FK_SubCategoria_Categoria" Association="DB_A363ED_ShopModel.FK_SubCategoria_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="SubCategoria" EntitySet="SubCategoria" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Categoria">
-          <Key>
-            <PropertyRef Name="idCategoria" />
-          </Key>
-          <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SubCategoria" Relationship="DB_A363ED_ShopModel.FK_SubCategoria_Categoria" FromRole="Categoria" ToRole="SubCategoria" />
-        </EntityType>
         <EntityType Name="DetalleVenta">
           <Key>
             <PropertyRef Name="idDetalleVenta" />
@@ -332,8 +325,8 @@
           <Property Name="idSubCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idCategoria" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Categoria" Relationship="DB_A363ED_ShopModel.FK_SubCategoria_Categoria" FromRole="SubCategoria" ToRole="Categoria" />
           <NavigationProperty Name="Producto" Relationship="DB_A363ED_ShopModel.FK_Producto_SubCategoria" FromRole="SubCategoria" ToRole="Producto" />
+          <NavigationProperty Name="Categoria" Relationship="DB_A363ED_ShopModel.FK_SubCategoria_Categoria" FromRole="SubCategoria" ToRole="Categoria" />
         </EntityType>
         <EntityType Name="Suscriptor">
           <Key>
@@ -369,18 +362,6 @@
           <NavigationProperty Name="DetalleVenta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Venta" FromRole="Venta" ToRole="DetalleVenta" />
           <NavigationProperty Name="Localidad" Relationship="DB_A363ED_ShopModel.FK_Venta_Localidad" FromRole="Venta" ToRole="Localidad" />
         </EntityType>
-        <Association Name="FK_SubCategoria_Categoria">
-          <End Type="DB_A363ED_ShopModel.Categoria" Role="Categoria" Multiplicity="1" />
-          <End Type="DB_A363ED_ShopModel.SubCategoria" Role="SubCategoria" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categoria">
-              <PropertyRef Name="idCategoria" />
-            </Principal>
-            <Dependent Role="SubCategoria">
-              <PropertyRef Name="idCategoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_DetalleVenta_Producto">
           <End Type="DB_A363ED_ShopModel.Producto" Role="Producto" Multiplicity="1" />
           <End Type="DB_A363ED_ShopModel.DetalleVenta" Role="DetalleVenta" Multiplicity="*" />
@@ -463,20 +444,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombreImagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SubCategoria" Relationship="DB_A363ED_ShopModel.FK_SubCategoria_Categoria" FromRole="Categoria" ToRole="SubCategoria" />
+        </EntityType>
+        <Association Name="FK_SubCategoria_Categoria">
+          <End Type="DB_A363ED_ShopModel.Categoria" Role="Categoria" Multiplicity="1" />
+          <End Type="DB_A363ED_ShopModel.SubCategoria" Role="SubCategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="SubCategoria">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DB_A363ED_ShopModelStoreContainer" CdmEntityContainer="DB_A363ED_ShopEntities" >
-          <EntitySetMapping Name="Categoria">
-            <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Categoria">
-              <MappingFragment StoreEntitySet="Categoria">
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DetalleVenta">
             <EntityTypeMapping TypeName="DB_A363ED_ShopModel.DetalleVenta">
               <MappingFragment StoreEntitySet="DetalleVenta">
@@ -572,6 +566,15 @@
                 <ScalarProperty Name="archivo" ColumnName="archivo" />
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
                 <ScalarProperty Name="idImagen" ColumnName="idImagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="nombreImagen" ColumnName="nombreImagen" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
