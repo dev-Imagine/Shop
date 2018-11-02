@@ -569,13 +569,8 @@ div a.cart span small {
   padding-right: 20px;
   float: left;
   width: 100%;
-  margin-bottom: 40px;
 }
-@media screen and (max-width: 768px) {
-  .feature-center {
-    margin-bottom: 50px;
-  }
-}
+
 .feature-center .desc {
   padding-left: 180px;
 }
@@ -598,9 +593,6 @@ div a.cart span small {
   font-size: 40px;
   line-height: 40px;
   color: #fff;
-}
-.feature-center p, .feature-center h3 {
-  margin-bottom: 30px;
 }
 .feature-center h3 {
   text-transform: uppercase;
@@ -1330,44 +1322,41 @@ hr {
     position: relative;
 }
 
-.owl-carousel .item {
+#carrouselCategories .owl-carousel .item {
     position: relative;
     z-index: 100;
     -webkit-backface-visibility: hidden;
     text-align: center !important;
 }
 
-.owl-carousel .item i {
-    font-size: 100px;
-    margin-bottom:10px;
-}
 
-.owl-carousel .item p {
-    font-size: 25px;
-    margin: 0px;
+#carrouselCategories .owl-carousel .item p {
+    font-size: 18px;
+    text-align: center;
+    margin: 5px;
 }
 
 
 
-.owl-nav > div {
+#carrouselCategories .owl-nav > div {
     margin-top: -26px;
     position: absolute;
     top: 50%;
     color: #cdcbcd;
 }
 
-.owl-nav i {
+#carrouselCategories .owl-nav i {
     font-size: 52px;
 }
 
-.owl-nav .owl-prev {
+#carrouselCategories .owl-nav .owl-prev {
     left: -30px !important;
     color: #2d2d2d !important;
     margin: -30px !important;
     background: none !important;
 }
 
-.owl-nav .owl-next {
+#carrouselCategories .owl-nav .owl-next {
     right: -30px !important;
     color: #2d2d2d !important;
     margin: -30px !important;
