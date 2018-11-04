@@ -155,6 +155,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SellController.cs" />
@@ -334,6 +335,8 @@
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\Sell\Cart.cshtml" />
     <Content Include="Views\Product\_ProductList.cshtml" />
+    <Content Include="Views\Admin\ViewProduct.cshtml" />
+    <Content Include="Views\Product\_PopUpGuardarModificarCategoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

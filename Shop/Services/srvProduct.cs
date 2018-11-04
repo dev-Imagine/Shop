@@ -49,5 +49,88 @@ namespace Shop.Services
                 }
             }
         }
+
+        private Producto GuardarProducto(Producto oProducto)
+        {
+            try
+            {
+                using (DB_A363ED_ShopEntities bd = new DB_A363ED_ShopEntities())
+                {
+                    oProducto.nombre = oProducto.nombre.ToUpper();
+                    bd.Entry(oProducto).State = System.Data.Entity.EntityState.Added;
+                    bd.SaveChanges();
+                    return oProducto;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private Producto ModificarProducto(Producto oProducto)
+        {
+            try
+            {
+                using (DB_A363ED_ShopEntities bd = new DB_A363ED_ShopEntities())
+                {
+                    oProducto.nombre = oProducto.nombre.ToUpper();
+                    bd.Entry(oProducto).State = System.Data.Entity.EntityState.Modified;
+                    bd.SaveChanges();
+                    return oProducto;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public Producto GuardarModificarProducto(Producto oProducto)
+        {
+            try
+            {
+                oProducto.nombre = oProducto.nombre.ToUpper();
+                
+                if (oProducto.idProducto == 0)
+                {
+                    GuardarProducto(oProducto);
+                }
+                else
+                {
+                    ModificarProducto(oProducto);
+                }
+                return oProducto;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void guardarImagen(int idProducto, string archivo)
+        {
+            try
+            {
+                using (DB_A363ED_ShopEntities bd = new DB_A363ED_ShopEntities())
+                {
+                    try
+                    {
+                        Imagen oImagen = new Imagen();
+                        oImagen.idProducto = idProducto;
+                        oImagen.archivo = archivo;
+                        bd.Entry(oImagen).State = System.Data.Entity.EntityState.Added;
+                        bd.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

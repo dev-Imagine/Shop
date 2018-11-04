@@ -1365,3 +1365,70 @@ hr {
 #carrouselCategories .owl-dot{
     display:none !important;
 }
+/*input image preview*/
+
+.preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.img-inputFile-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.fileName-preview {
+    padding-top: 10px;
+    font-size: 18px;
+    color: #515d6e;
+}
+
+.img-index {
+    background-image: linear-gradient(rgba(41, 41, 41, 0), rgba(41, 41, 41, 0.44)), url(../../Content/img/Fondo_index.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin: 0 auto;
+}
+
+.margenes-img-index {
+    margin-top: 150px !important;
+    margin-bottom: 150px !important;
+}
+
+@media (max-width:1080px) {
+    .margenes-img-index {
+        margin-top: 100px !important;
+        margin-bottom: 100px !important;
+    }
+}
+
+@media (max-width:550px) {
+    .margenes-img-index {
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+.item-seleccionado {
+    border: 1px solid #dc3545;
+    border-radius: 5px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    margin: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #eaeaea;
+}
+
+    .item-seleccionado span, .item-seleccionado p {
+        color: #000;
+    }
+
+.dis-none {
+    display: none
+}

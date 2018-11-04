@@ -1,0 +1,182 @@
+﻿@{
+                ViewBag.Title = "ViewProduct";
+                List<Shop.Models.Categoria> lstCategoria = (List<Shop.Models.Categoria>)ViewBag.lstCategoria;
+            }
+
+
+<div class="row"> 
+    
+            <div class="col-md-5 preview">
+           <img id="imgSalida" style="width:100%;height:100%" src="" />
+        </div>
+        
+        <div class="col-md-7 animate-box">
+            <h3>Nuevo Producto</h3>
+            <form method="post" action="@Url.Action("GuardarModificarProducto","Product")" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="row form-group">
+                    <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-12">
+                            <label>Categoría &nbsp;&nbsp;<button type="button" class="btn btn-outline-dark btn-agregar" onclick="_PopUpGuardarModificarCategoria(0,1)"><i class="fa fa-plus-circle"></i></button></label>
+                            <div class="col-12">
+                                <select id="select-Categorias" onchange="CargarComboSubcategoria()" class="form-control" style="border:0px; height: 55px;" name="">
+                                    <option selected value="0">Categoría</option>
+                                    @{
+                                        foreach (Shop.Models.Categoria oCategoria in lstCategoria)
+                                        {
+
+                                            <option value="@oCategoria.idCategoria">@oCategoria.nombre</option>
+
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-12">
+                            <label>Sub categoría &nbsp;&nbsp;<button type="button" class="btn btn-outline-dark btn-agregar" onclick="_PopUpGuardarModificarCategoria(1,2)"><i class="fa fa-plus-circle"></i></button></label>
+                            @{
+
+                                <div class="col-12">
+                                    <select disabled id="select-Subcategoria" class="form-control" style="border:0px; height: 55px;" name="oProducto.idSubCategoria">
+                                        <option value="0">Subcategoria</option>
+                                    </select>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="col-xs-12" style="text-align:center;">
+                            <input name="imagen" id="file-input" type="file" />
+                            <br />
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        <!-- <label for="fname">First Name</label> -->
+                        <input type="text" name="oProducto.nombre" required id="idNombre" class="form-control" placeholder="Nombre del producto">
+                    </div>
+                    <div class="col-md-6">
+                        <!-- <label for="lname">Last Name</label> -->
+                        <input type="number" name="precio"  required step=".1" min="0" id="idPrecio" class="form-control" placeholder="Precio del producto">
+                    </div>
+                </div>
+                @* Stocks *@
+                <div class="row form-group">
+                    <div class="col-md-4">
+                        <!-- <label for="email">Email</label> -->
+                        <input type="number" name="oProducto.stockMinimo" required min="0" id="idStockMinimo" class="form-control" placeholder="Stock Minimo">
+                    </div>
+                    <div class="col-md-4">
+                        <!-- <label for="email">Email</label> -->
+                        <input type="number" name="oProducto.stockActual" required min="0" id="idStockActual" class="form-control" placeholder="Stock Actual">
+                    </div>
+                    <div class="col-md-4">
+                        <!-- <label for="email">Email</label> -->
+                        <input type="number" name="oProducto.stockIdeal" required min="0" id="idStockIdeal" class="form-control" placeholder="Stock Ideal">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <!-- <label for="subject">Subject</label> -->
+                        <input type="text" name="oProducto.descuento" required id="idDescuento" class="form-control" placeholder="Descuento">
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <!-- <label for="message">Message</label> -->
+                        <textarea name="oProducto.descripcion" required id="idDescripcion" cols="30" rows="10" class="form-control" placeholder="Descripcion sobre el producto."></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+   
+
+</div>
+<div id="div-popup-categoria"></div>
+
+@section scripts{
+<script>
+    ///* INPUT IMAGEN */
+
+    $(window).load(function () {
+
+        $(function () {
+            $('#file-input').change(function (e) {
+                addImage(e);
+            });
+
+            function addImage(e) {
+                var file = e.target.files[0],
+                    imageType = /image.*/;
+
+                if (!file.type.match(imageType))
+                    return;
+
+                var reader = new FileReader();
+                reader.onload = fileOnload;
+                reader.readAsDataURL(file);
+            }
+
+            function fileOnload(e) {
+                var result = e.target.result;
+                $('#imgSalida').attr("src", result);
+            }
+        });
+    });
+    ///* FIN INPUT IMAGEN */
+    //Categoria
+
+    function CargarComboSubcategoria() {
+        var url = "@Url.Action("ObtenerSubcategoriaDeCategoria", "Product")";
+        var idCategoria = document.getElementById("select-Categorias").value;
+        var data = { idCategoria: idCategoria };
+        $.post(url, data).done(function (data) {
+            if (data == "<option selected value=\"0\">Subcategoria</option>" | data == "") {
+                document.getElementById("select-Subcategoria").innerHTML = "<option selected value=\"0\">Subcategoria</option>";
+                document.getElementById("select-Subcategoria").setAttribute("disabled", "true");
+            }
+            else {
+                document.getElementById("select-Subcategoria").innerHTML = data + "";
+                document.getElementById("select-Subcategoria").removeAttribute("disabled");
+            }
+        });
+    }
+
+    function _PopUpGuardarModificarCategoria(idCategoria, tipo) {
+        if (idCategoria == 1) {
+            idCategoria = document.getElementById("select-Categorias").value;
+        }
+        var url = "@Url.Action("_PopUpGuardarModificarCategoria", "Product")";
+        var data = { idCategoria: idCategoria };
+        
+        $.post(url, data).done(function (data) {
+            
+            if (data.length > 0) {                
+                $('#div-popup-categoria').html(data);                
+                $('#popupCategoria').modal('show');
+                if (tipo == 1) {
+                    $('#spnTituloPopUp').text('NUEVA CATEGORIA')
+                } else {
+                    $('#spnTituloPopUp').text('NUEVA SUBCATEGORIA')
+                }
+
+            }
+        });
+    }
+
+    function prueba() {
+        var idSub = $('#select-Subcategoria').val();
+        alert(idSub);
+    }
+</script>
+}
