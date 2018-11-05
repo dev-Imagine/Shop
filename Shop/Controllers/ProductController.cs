@@ -83,10 +83,11 @@ namespace Shop.Controllers
             }
 
         }
-        public JsonResult GuardarModificarCategoria(Categoria oCategoria, string[] Subcategorias)
+        public JsonResult GuardarModificarCategoria(Categoria oCategoria, string[] Subcategorias, HttpPostedFileBase imagen)
         {
             try
             {
+                Categoria oCatImagen = new Categoria();
                 //usuario oUsuario = (usuario)Session["Usuario"];
                 //if (oUsuario == null || oUsuario.idTipoUsuario != 2)
                 //{
@@ -104,7 +105,17 @@ namespace Shop.Controllers
                     oCategoria.SubCategoria.Add(oSubcategoria);
                 }
                 srvCategories sCategoria = new srvCategories();
+                //Guardar imagen de categoria
+                string stNombreArchivo = imagen.FileName.Substring(imagen.FileName.LastIndexOf("\\") + 1).ToString();
+                string stRuta = "~/Images/Categories/";
+                oCatImagen = sCategoria.ObtenerCategoria(oCategoria.idCategoria);
+                if (oCategoria.nombreImagen != oCatImagen.nombreImagen || stNombreArchivo == "404_not_found.jpg" || oCategoria.idCategoria == 0)
+                {
+                    imagen.SaveAs(Server.MapPath(stRuta + stNombreArchivo));
+                    oCategoria.nombreImagen = stNombreArchivo;
+                }
                 oCategoria = sCategoria.GuardarModificarCategoria(oCategoria);
+
                 return Json(oCategoria.idCategoria + ";" + oCategoria.nombre);
             }
             catch (Exception)
@@ -145,8 +156,8 @@ namespace Shop.Controllers
                 srvProduct sProducto = new srvProduct();
                 oProducto.precio = Convert.ToDecimal(precio.Replace(".", ","));               
                 sProducto.GuardarModificarProducto(oProducto);
-                string stNombreArchivo = imagen.FileName.ToString();
-                string stRuta = "~/Images/Product/";
+                string stNombreArchivo = imagen.FileName.Substring(imagen.FileName.LastIndexOf("\\") + 1).ToString();
+                string stRuta = "~/Images/Product/";                
                 imagen.SaveAs(Server.MapPath(stRuta + stNombreArchivo));
                 sProducto.guardarImagen(oProducto.idProducto, stNombreArchivo);
                 return RedirectToAction("ViewProduct","Admin");

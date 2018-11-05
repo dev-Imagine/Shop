@@ -1,5 +1,12 @@
 ﻿@{
     @model Shop.Models.Categoria
+    if (Model.nombreImagen == null)
+    {
+        Model.nombreImagen = "404_not_found.jpg";
+
+    }
+    string nombreImgagenCategoria = Model.nombreImagen;
+
 
 }
 
@@ -10,26 +17,36 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
+                    <div class="">
+                       
+                    </div>
                 </button>
             </div>
-            <div class="modal-body" id="div-frmProveedor">
-                <form class="" style="display: flex; flex-wrap: wrap;" autocomplete="off">
-                        <span id="spnTituloPopUp" class="">
-                            Nueva categoría
-                        </span>
+            <div class="modal-body" id="div-frmCategoria">
+                <form  style="display: flex; flex-wrap: wrap;" autocomplete="off" enctype="multipart/form-data">
                     <div>
-                        <input id="popup_idCategoria" value="@Model.idCategoria" class="dis-none">
+                        <img id="imgSalida2" style="width:300px;height:300px" src="~/Images/Categories/@nombreImgagenCategoria" />
                     </div>
-                    <div class="" style="width: 100%;" >
-                        <input class="form-control" id="popup_NombreCategoria" type="text" placeholder="Nombre" value="">
-                    </div>
-                    <div class="" style="width: 80%;">
-                        <input class="form-control" id="popup_Subcategoria" type="text" placeholder="Subcategorías">
-                    </div>
+                        <br />
+                        <input name="file-input2" id="file2" type="file" />     
+                    <span id="spnTituloPopUp" style="width:100%">
+                        Nueva categoría
+                    </span>
+                    <br />                      
+                        <div>
+                            <input id="popup_idCategoria" style="width:0%" value="@Model.idCategoria" class="dis-none">
+                        </div>
+                        <div class="" style="width: 100%;">
+                            <input class="form-control" id="popup_NombreCategoria" type="text" placeholder="Nombre" value="@Model.nombre">
+                        </div>
+                        <div class="" style="width: 80%;">
+                            <input class="form-control" id="popup_Subcategoria" type="text" placeholder="Subcategorías">
+                        </div>
 
-                    <div class="" style="width: 20%;">
-                        <button type="button" class="btn btn-outline-dark" style="width: 100%; height: 57px; border-radius: inherit;" onclick="AgregarSubcategoria()"><i class="fa fa-plus"></i></button>
-                    </div>
+                        <div class="" style="width: 20%;">
+                            <button type="button" class="btn btn-outline-dark" style="width: 100%; height: 57px; border-radius: inherit;" onclick="AgregarSubcategoria()"><i class="fa fa-plus"></i></button>
+                        </div>
+                    
 
                     <div id="popup_div-Subcategorias" style="width:100%;">
                         @{
@@ -37,8 +54,8 @@
                             {
                                 <div-subC id="div-Subcategoria-@oSubcategoria.idSubCategoria" data-id="@oSubcategoria.idSubCategoria" data-content="@oSubcategoria.nombre" style="width:100%;">
                                     <div class="item-seleccionado" style="border-color:#000;">
-                                        <span style="float:right">
-                                            <a style="cursor:pointer" onclick="EliminarSubcategoria('@oSubcategoria.idSubCategoria')">
+                                        <span style="float:right" >
+                                            <a class="fa fa-dot-circle-o" style="cursor:pointer; width:100%; height:100%;" onclick="EliminarSubcategoria('@oSubcategoria.idSubCategoria')">
                                                 <i class="" aria-hidden="true"></i>
                                             </a>
                                         </span>
@@ -59,10 +76,36 @@
 </div>
 
 <script>
+    //Imagen de categoria
+
+    $('#file2').change(function (e) {
+                addImage(e);
+                function addImage(e) {
+                    var file = e.target.files[0],
+                        imageType = /image.*/;
+
+                    if (!file.type.match(imageType))
+                        return;
+
+                    var reader = new FileReader();
+                    reader.onload = fileOnload;
+                    reader.readAsDataURL(file);
+                }
+
+                function fileOnload(e) {
+                    var result = e.target.result;
+                    $('#imgSalida2').attr("src", result);
+                }
+            });
+
+
+
+
+    //fin imagen categoria
     function GuardarCategoria() {
         var IdCategoria = $('#popup_idCategoria').val();
         $('#popup_idCategoria').val('');
-        var NombreCategoria = $('#popup_NombreCategoria').val();
+        var NombreCategoria = $('#popup_NombreCategoria').val();       
         $('#popup_NombreCategoria').val('');
         if (NombreCategoria.trim() == '') {
             return;
@@ -73,29 +116,73 @@
             Subcategorias.push(subcategoria);
         });
 
-        var url = "@Url.Action("GuardarModificarCategoria", "Product")";
-        var data = { 'oCategoria.idCategoria': IdCategoria, 'oCategoria.nombre': NombreCategoria, Subcategorias: Subcategorias };
+        @*var url = "@Url.Action("GuardarModificarCategoria", "Product")";
+        var data = { 'oCategoria.idCategoria': IdCategoria, 'oCategoria.nombre': NombreCategoria, Subcategorias: Subcategorias, imagen: frmData.imagen };*@
 
-        $.post(url, data).done(function (data) {
-            if (data.length != 0) {
-                var datos = data.split(';');
-                $('#select-Categorias').append($('<option>', {
-                    value: datos[0],
-                    text: datos[1]
-                }));
-                $("#select-Categorias").val(datos[0]);
-                $("#select-Categorias").change();
-                swal("Exito!", "La categoría y sus subcategorías ha sido creada/actualizada.", "success");
-            }
-            else {
-                swal("Ocurrió un error", "Se produjo un error al intentar guardar/actualizar la categoría y sus subcategorías.", "error");
-            }
-            $('#popup_NombreCategoria').modal('hide');
-            $("#popup_Subcategoría").val("");
-            $("#Subcategorias").innerHTML = '';
+        //$.post(url, data).done(function (data) {
+        //    if (data.length != 0) {
+        //        var datos = data.split(';');
+        //        $('#select-Categorias').append($('<option>', {
+        //            value: datos[0],
+        //            text: datos[1]
+        //        }));
+        //        $("#select-Categorias").val(datos[0]);
+        //        $("#select-Categorias").change();
+        //        swal("Exito!", "La categoría y sus subcategorías ha sido creada/actualizada.", "success");
+        //    }
+        //    else {
+        //        swal("Ocurrió un error", "Se produjo un error al intentar guardar/actualizar la categoría y sus subcategorías.", "error");
+        //    }
+        //    $('#popup_NombreCategoria').modal('hide');
+        //    $("#popup_Subcategoría").val("");
+        //    $("#Subcategorias").innerHTML = '';
 
+        //});
+
+
+
+        //prueba nuevo ajax
+
+       //neuvo data
+        alert(1);
+        var frmData = new FormData();
+        alert(2);
+        frmData.append("oCategoria.idCategoria", IdCategoria);
+        alert(3);
+        frmData.append("oCategoria.nombre", NombreCategoria);
+        alert(4);
+        frmData.append("Subcategorias", Subcategorias);
+        alert(5);
+        frmData.append("imagen", document.getElementById('file2').files[0]);
+        alert(6);
+
+        //post nuevo
+        $.ajax({
+            url: "@Url.Action("GuardarModificarCategoria", "Product")",
+            type: 'POST',
+            data: frmData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data.length != 0) {
+                    var datos = data.split(';');
+                    $('#select-Categorias').append($('<option>', {
+                        value: datos[0],
+                        text: datos[1]
+                    }));
+                    $("#select-Categorias").val(datos[0]);
+                    $("#select-Categorias").change();
+                    swal("Exito!", "La categoría y sus subcategorías ha sido creada/actualizada.", "success");
+                }
+                else {
+                    swal("Ocurrió un error", "Se produjo un error al intentar guardar/actualizar la categoría y sus subcategorías.", "error");
+                }
+                $('#popup_NombreCategoria').modal('hide');
+                $("#popup_Subcategoría").val("");
+                $("#Subcategorias").innerHTML = '';
+            }
         });
-        $('#popupCategoria').hide();
+        $('#popupCategoria').toggle();
     }
     var contador = 0;
     function AgregarSubcategoria()
@@ -127,4 +214,5 @@
             });
         }
     }
+
 </script>
