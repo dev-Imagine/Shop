@@ -18,6 +18,7 @@
     <Property Name="cantidad" Type="int" Nullable="false" />
     <Property Name="subTotal" Type="money" Nullable="false" />
     <Property Name="precioUnitario" Type="money" Nullable="false" />
+    <Property Name="descuento" Type="int" />
   </EntityType>
   <EntityType Name="Imagen">
     <Key>

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DB_A363ED_ShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="DB_A363ED_ShopEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="DetalleVenta" EntityType="DB_A363ED_ShopModel.DetalleVenta" />
     <EntitySet Name="Localidad" EntityType="DB_A363ED_ShopModel.Localidad" />
     <EntitySet Name="Producto" EntityType="DB_A363ED_ShopModel.Producto" />
     <EntitySet Name="Provincia" EntityType="DB_A363ED_ShopModel.Provincia" />
@@ -9,14 +8,6 @@
     <EntitySet Name="Suscriptor" EntityType="DB_A363ED_ShopModel.Suscriptor" />
     <EntitySet Name="Usuario" EntityType="DB_A363ED_ShopModel.Usuario" />
     <EntitySet Name="Venta" EntityType="DB_A363ED_ShopModel.Venta" />
-    <AssociationSet Name="FK_DetalleVenta_Producto" Association="DB_A363ED_ShopModel.FK_DetalleVenta_Producto">
-      <End Role="Producto" EntitySet="Producto" />
-      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DetalleVenta_Venta" Association="DB_A363ED_ShopModel.FK_DetalleVenta_Venta">
-      <End Role="Venta" EntitySet="Venta" />
-      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
-    </AssociationSet>
     <AssociationSet Name="FK_Localidad_Provincia" Association="DB_A363ED_ShopModel.FK_Localidad_Provincia">
       <End Role="Provincia" EntitySet="Provincia" />
       <End Role="Localidad" EntitySet="Localidad" />
@@ -39,20 +30,16 @@
       <End Role="Categoria" EntitySet="Categoria" />
       <End Role="SubCategoria" EntitySet="SubCategoria" />
     </AssociationSet>
+    <EntitySet Name="DetalleVenta" EntityType="DB_A363ED_ShopModel.DetalleVenta" />
+    <AssociationSet Name="FK_DetalleVenta_Producto" Association="DB_A363ED_ShopModel.FK_DetalleVenta_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleVenta_Venta" Association="DB_A363ED_ShopModel.FK_DetalleVenta_Venta">
+      <End Role="Venta" EntitySet="Venta" />
+      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="DetalleVenta">
-    <Key>
-      <PropertyRef Name="idDetalleVenta" />
-    </Key>
-    <Property Name="idDetalleVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idVenta" Type="Int32" Nullable="false" />
-    <Property Name="idProducto" Type="Int32" Nullable="false" />
-    <Property Name="cantidad" Type="Int32" Nullable="false" />
-    <Property Name="subTotal" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="precioUnitario" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <NavigationProperty Name="Producto" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Producto" FromRole="DetalleVenta" ToRole="Producto" />
-    <NavigationProperty Name="Venta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Venta" FromRole="DetalleVenta" ToRole="Venta" />
-  </EntityType>
   <EntityType Name="Localidad">
     <Key>
       <PropertyRef Name="idLocalidad" />
@@ -76,9 +63,9 @@
     <Property Name="stockIdeal" Type="Int32" Nullable="false" />
     <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="descuento" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="DetalleVenta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Producto" FromRole="Producto" ToRole="DetalleVenta" />
     <NavigationProperty Name="SubCategoria" Relationship="DB_A363ED_ShopModel.FK_Producto_SubCategoria" FromRole="Producto" ToRole="SubCategoria" />
     <NavigationProperty Name="Imagen" Relationship="DB_A363ED_ShopModel.FK_Imagen_Producto" FromRole="Producto" ToRole="Imagen" />
+    <NavigationProperty Name="DetalleVenta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Producto" FromRole="Producto" ToRole="DetalleVenta" />
   </EntityType>
   <EntityType Name="Provincia">
     <Key>
@@ -129,33 +116,9 @@
     <Property Name="montoTotal" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <Property Name="emailComprador" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="direccionShipments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="DetalleVenta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Venta" FromRole="Venta" ToRole="DetalleVenta" />
     <NavigationProperty Name="Localidad" Relationship="DB_A363ED_ShopModel.FK_Venta_Localidad" FromRole="Venta" ToRole="Localidad" />
+    <NavigationProperty Name="DetalleVenta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Venta" FromRole="Venta" ToRole="DetalleVenta" />
   </EntityType>
-  <Association Name="FK_DetalleVenta_Producto">
-    <End Type="DB_A363ED_ShopModel.Producto" Role="Producto" Multiplicity="1" />
-    <End Type="DB_A363ED_ShopModel.DetalleVenta" Role="DetalleVenta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Producto">
-        <PropertyRef Name="idProducto" />
-      </Principal>
-      <Dependent Role="DetalleVenta">
-        <PropertyRef Name="idProducto" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DetalleVenta_Venta">
-    <End Type="DB_A363ED_ShopModel.Venta" Role="Venta" Multiplicity="1" />
-    <End Type="DB_A363ED_ShopModel.DetalleVenta" Role="DetalleVenta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Venta">
-        <PropertyRef Name="idVenta" />
-      </Principal>
-      <Dependent Role="DetalleVenta">
-        <PropertyRef Name="idVenta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Localidad_Provincia">
     <End Type="DB_A363ED_ShopModel.Provincia" Role="Provincia" Multiplicity="1" />
     <End Type="DB_A363ED_ShopModel.Localidad" Role="Localidad" Multiplicity="*" />
@@ -232,6 +195,44 @@
       </Principal>
       <Dependent Role="SubCategoria">
         <PropertyRef Name="idCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DetalleVenta">
+    <Key>
+      <PropertyRef Name="idDetalleVenta" />
+    </Key>
+    <Property Name="idDetalleVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idVenta" Type="Int32" Nullable="false" />
+    <Property Name="idProducto" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="subTotal" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="precioUnitario" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="descuento" Type="Int32" />
+    <NavigationProperty Name="Producto" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Producto" FromRole="DetalleVenta" ToRole="Producto" />
+    <NavigationProperty Name="Venta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Venta" FromRole="DetalleVenta" ToRole="Venta" />
+  </EntityType>
+  <Association Name="FK_DetalleVenta_Producto">
+    <End Type="DB_A363ED_ShopModel.Producto" Role="Producto" Multiplicity="1" />
+    <End Type="DB_A363ED_ShopModel.DetalleVenta" Role="DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleVenta_Venta">
+    <End Type="DB_A363ED_ShopModel.Venta" Role="Venta" Multiplicity="1" />
+    <End Type="DB_A363ED_ShopModel.DetalleVenta" Role="DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venta">
+        <PropertyRef Name="idVenta" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="idVenta" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

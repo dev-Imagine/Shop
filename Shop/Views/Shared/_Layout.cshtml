@@ -53,13 +53,13 @@
                 <div class="shopping-cart dropdown">
                     <a data-toggle="dropdown" id="visualizarCarrito" role="button" class="btn cart">
                         <span>
-                            <small>@cantProductos</small>
+                            <small id="CantProductos">@cantProductos</small>
                             <i class="fa fa-shopping-cart"></i> 
                         </span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right animated fadeInDown" role="menu" aria-labelledby="visualizarCarrito">
-                        <ul class="dropdown-product">
+                        <ul id="ulCarrito" class="dropdown-product">
                             @if (oVenta == null || oVenta.DetalleVenta.Count == 0)
                             {
                                 <li class="text-muted text-center">
@@ -71,14 +71,23 @@
                             {
                                 foreach (Shop.Models.DetalleVenta oDetalle in oVenta.DetalleVenta)
                                 {
-                                    <li>
+                                    <li id="li-@oDetalle.idProducto">
                                         <div class="dw-product-box">
                                             <div class="u-img">
-                                                <img class="img-fluid img-circle" style="width:50px" src="~/Images/Product/@oDetalle.Producto.Imagen.Where(x=> x.principal == true).FirstOrDefault().archivo" alt="product">
+                                                <a href="@Url.Action("ProductDetail", "Product", new { idProducto = oDetalle.Producto.idProducto })">
+                                                    <img class="img-fluid img-circle" style="width:50px" src="~/Images/Product/@oDetalle.Producto.Imagen.Where(x=> x.principal == true).FirstOrDefault().archivo" alt="product">
+                                                </a>
                                             </div>
                                             <div class="u-text">
-                                                <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">@oDetalle.Producto.nombre (@("x" + oDetalle.cantidad))</h4>
-                                                <p class="text-muted">$@Convert.ToInt32(oDetalle.precioUnitario) c/u <a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
+                                                <a href="@Url.Action("ProductDetail", "Product", new { idProducto = oDetalle.Producto.idProducto })">
+                                                    <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">@oDetalle.Producto.nombre (@("x" + oDetalle.cantidad))</h4>
+                                                </a>
+                                                <p class="text-muted">$@Convert.ToInt32(oDetalle.precioUnitario) c/u
+                                                @if (oDetalle.descuento > 0)
+                                                {
+                                                    <span class="text-primary">(-@oDetalle.descuento%)</span>
+                                                }
+                                                <a href="javascript:RemoveProduct(@oDetalle.idProducto)" class="pull-right"><i class="fa fa-times"></i></a></p>
                                             </div>
                                         </div>
                                     </li>
@@ -116,6 +125,40 @@
 
 
     @RenderSection("scripts", required: false)
+
+    <script>
+        function RemoveProduct(idProducto) {
+            var urlIndex = '@Url.Action("Index", "Home")';
+            $.ajax({
+            type: 'POST',
+            url: "@Url.Action("RemoveProduct", "Sell")",
+                data: { "idProducto": idProducto },
+                success: function (data) {
+                    if (data >= 0) {
+                        document.getElementById("CantProductos").innerHTML = data;
+                        if (data == 0)
+                        {
+                            document.getElementById("ulCarrito").innerHTML = '<li class="text-muted text-center"><p style="font-size:50px"><i class="fa fa-cart-arrow-down"></i></p><p>Carrito vacío</p></li>';
+                            document.getElementById("ulCart").innerHTML = '<li class="text-muted text-center"><p style="font-size:100px"><i class="fa fa-cart-arrow-down"></i></p><p style="font-size:25px">Ahún no has agregado ningun producto al carrito</p></li><li style="margin-bottom: 0px;"><br /><button class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;font-size: 25px; width: 80%;" type="button" onclick="location.href= ' + urlIndex + '">Comenzar a comprar!</button><br /><br /><br /></li>';
+                        }
+                        else
+                        {
+                            $('#li-' + idProducto).remove();
+                            $('#liCart-' + idProducto).remove(); 
+                        }
+                        //swal("Exito!", "Producto removido.", "success");
+                    }
+                    else
+                    {
+                        swal("Error!", data, "error");
+                    }
+                },
+                error: function () {
+                    swal("Ocurrió un error", "El producto no ha sido agregado al carrito", "error");
+                }
+            });
+        }
+    </script>
 
     <footer id="fh5co-footer" class="fh5co-bg-section animated fadeInUp" style="padding:4em 0" role="contentinfo">
         <div class="container">

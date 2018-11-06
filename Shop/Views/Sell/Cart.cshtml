@@ -11,32 +11,70 @@
     <div class="row animate-box">
         @*CARRITO*@
         <div class="col-md-8 text-center">
-            <ul class="dropdown-product">
-                @foreach (Shop.Models.DetalleVenta oDetalle in oVenta.DetalleVenta)
+            <ul id="ulCart" class="dropdown-product">
+                @if (oVenta == null || oVenta.DetalleVenta.Count() == 0)
                 {
-                    <li>
-                        <div class="dw-product-box">
-                            <div class="u-img text-center">
-                                <img class="img-fluid img-circle" style="width:100px; margin-bottom: 9px;" src="~/Images/Product/@oDetalle.Producto.Imagen.Where(x=> x.principal == true).FirstOrDefault().archivo" alt="product">
-                            </div>
-                            <div class="u-text" style="vertical-align: text-top;">
-                                <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">@oDetalle.Producto.nombre (@("x" + oDetalle.cantidad))</h4>
-                                <p class="text-muted">$@Convert.ToInt32(oDetalle.precioUnitario) c/u <span class="pull-right">$@Convert.ToInt32(oDetalle.subTotal)</span></p>
-                                <p class="text-muted">@oDetalle.Producto.SubCategoria.Categoria.nombre > @oDetalle.Producto.SubCategoria.nombre<a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
+                    <li class="text-muted text-center">
+                        <p style="font-size:100px"><i class="fa fa-cart-arrow-down"></i></p>
+                        <p style="font-size:25px">Ahún no has agregado ningun producto al carrito</p>
+                    </li>
+                    <li style="margin-bottom: 0px;">
+                        <br />
+                        <button class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;font-size: 25px; width: 80%;" type="button" onclick="location.href= '@Url.Action("Index","Home")'">Comenzar a comprar!</button>
+                        <br /><br /><br />
+                    </li>
 
+                }
+                else
+                {
+                    foreach (Shop.Models.DetalleVenta oDetalle in oVenta.DetalleVenta)
+                    {
+                        <li id="liCart-@oDetalle.idProducto">
+                            <div class="dw-product-box">
+                                <div class="u-img text-center">
+                                    <a href="@Url.Action("ProductDetail", "Product", new { idProducto = oDetalle.Producto.idProducto })">
+                                        <img class="img-fluid img-circle" style="width:100px; margin-bottom: 9px;" src="~/Images/Product/@oDetalle.Producto.Imagen.Where(x=> x.principal == true).FirstOrDefault().archivo" alt="product">
+                                    </a>
+                                </div>
+                                <div class="u-text" style="vertical-align: text-top;">
+                                    <a style="font-size:20px" href="@Url.Action("ProductDetail", "Product", new { idProducto = oDetalle.Producto.idProducto })">
+                                        <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">@oDetalle.Producto.nombre (@("x" + oDetalle.cantidad))</h4>
+                                    </a>
+                                    <p class="text-muted">
+                                        $@Convert.ToInt32(oDetalle.precioUnitario) c/u
+                                        @if (oDetalle.descuento > 0)
+                                        {
+                                            <span class="text-primary">(-@oDetalle.descuento%)</span>
+                                            <span style="font-size: 17px;" class="pull-right">
+                                                <span class="textDescuento">$@(Convert.ToInt32(oDetalle.precioUnitario) * oDetalle.cantidad)</span>
+                                                $@Convert.ToInt32(oDetalle.subTotal)
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span style="font-size: 17px;" class="pull-right">$@Convert.ToInt32(oDetalle.subTotal)</span>
+                                        }
+                                    </p>
+                                    <p class="text-muted">
+                                        <a class="linkCategories" href="@Url.Action("ProductList", "Product", new { stSearch = oDetalle.Producto.SubCategoria.Categoria.nombre })">@oDetalle.Producto.SubCategoria.Categoria.nombre</a>
+                                        >
+                                        <a class="linkCategories" href="@Url.Action("ProductList", "Product", new { stSearch = (oDetalle.Producto.SubCategoria.Categoria.nombre + oDetalle.Producto.SubCategoria.nombre) })">@oDetalle.Producto.SubCategoria.nombre</a>
+                                        <a href="javascript:RemoveProduct(@oDetalle.idProducto)" class="pull-right"><i class="fa fa-times"></i></a>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </li>
+                    }
+                    <li>
+                        <span class="price" style="color: #484848; margin-bottom: 10px;">Total $@Convert.ToInt32(oVenta.montoTotal)</span>
+                    </li>
+
+                    <li style="margin-bottom: 0px;">
+                        <button class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;font-size: 25px; width: 80%;" type="submit">Pagar</button>
+                        <br /><br /><br /><br />
                     </li>
                 }
 
-                <li>
-                    <span class="price" style="color: #484848; margin-bottom: 10px;">Total $@Convert.ToInt32(oVenta.montoTotal)</span>
-                </li>
-
-                <li style="margin-bottom: 0px;">
-                    <button class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;font-size: 25px; width: 80%;" type="submit">Pagar</button>
-                    <br /><br /><br /><br />
-                </li>
             </ul>
         </div>
         @*MEDIOS DE PAGO Y ENVIO*@

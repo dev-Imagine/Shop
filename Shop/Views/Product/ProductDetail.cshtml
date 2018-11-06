@@ -25,7 +25,18 @@
 
             <div class="col-md-6 animate-box text-center">
                 <h2>@oPro.nombre</h2>
-                <span class="price text-center">ARS$ @Convert.ToInt32(oPro.precio)</span>
+                @if (oPro.descuento > 0)
+                {
+                    <div class="price text-center">
+                        <p class="mb-0">ARS$@Convert.ToInt32(oPro.precio - ((oPro.precio * oPro.descuento) / 100))</p>
+                        <p class="mb-0 textDescuento">ARS$@Convert.ToInt32(oPro.precio)</p>
+                    </div>
+                    <span class="porcentajeDescuento">-20%</span>
+                }
+                else
+                {
+                    <span class="price text-center">ARS$@Convert.ToInt32(oPro.precio)</span>
+                }
                 <p>@oPro.descripcion</p>
 
                 <p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis molestias totam fugiat soluta accusantium omnis quod similique placeat at. Dolorum ducimus libero fuga molestiae asperiores obcaecati corporis sint illo facilis.</p>
@@ -40,7 +51,11 @@
                         <p>Ullam dolorum iure dolore dicta fuga ipsa velit veritatis</p>
                     </div>
                 </div>
-                <p>@oPro.SubCategoria.Categoria.nombre > @oPro.SubCategoria.nombre</p>
+                <p>
+                    <a class="linkCategories" href="@Url.Action("ProductList", "Product", new { stSearch = oPro.SubCategoria.Categoria.nombre })">@oPro.SubCategoria.Categoria.nombre</a>
+                    >
+                    <a class="linkCategories" href="@Url.Action("ProductList", "Product", new { stSearch = (oPro.SubCategoria.Categoria.nombre + oPro.SubCategoria.nombre) })">@oPro.SubCategoria.nombre</a>
+                </p>
                 <div class="form-group">
                     <select class="form-control" id="cantidad">
 
@@ -64,9 +79,20 @@
             url: "@Url.Action("AddProduct", "Sell")",
                 data: { "idProducto": @oPro.idProducto, "cantidad": cantidad },
                 success: function (data) {
-                    console.log(data);
-                    if (data) {
-                        swal("Exito", "Producto agregado", "success");
+                    if (data == 'true') {
+                        swal({
+                            title: "Exito!",
+                            text: "El producto ha sido agregado al carrito de compras.",
+                            type: "success",
+                            dangerMode: true,
+                            confirmButtonText: "Aceptar",
+                            showCancelButton: false,
+                            closeOnConfirm: false
+                        },
+                            function (isConfirm) {
+                                location.reload(true);
+                            }
+                        );
                     }
                     else
                     {

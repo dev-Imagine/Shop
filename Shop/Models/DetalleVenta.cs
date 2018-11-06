@@ -20,6 +20,7 @@ namespace Shop.Models
         public int cantidad { get; set; }
         public decimal subTotal { get; set; }
         public decimal precioUnitario { get; set; }
+        public Nullable<int> descuento { get; set; }
     
         public virtual Producto Producto { get; set; }
         public virtual Venta Venta { get; set; }

@@ -1432,3 +1432,40 @@ hr {
 .dis-none {
     display: none
 }
+
+.linkCategories {
+    color: #2d2d2d;
+    border-bottom: 1px solid #d1c286;
+    font-size: 14px;
+}
+
+.text-primary {
+    color: #d8cb98 !important;
+}
+
+.textDescuento {
+    text-decoration: line-through;
+    font-size: 14px;
+    color: #ababab;
+}
+
+
+.porcentajeDescuento {
+    top: 10px;
+    left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    z-index: 100;
+    background: #2d2d2d;
+    color: #d1c286;
+    font-size: 22px;
+    margin-left: 10px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    vertical-align: super;
+}
