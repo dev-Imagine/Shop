@@ -11,7 +11,7 @@ namespace Shop.Controllers
     public class ProductController : Controller
     {
         // VISTAS
-        [HttpPost]
+        [HttpGet]
         public ActionResult ProductList(string stSearch)
         {
             srvProduct sPro = new srvProduct();

@@ -25,7 +25,7 @@
                                     {
                                         <div class="panel-group accordion-menu" id="accordion">
                                             <p>
-                                                <a href="#">@oCategoria.nombre</a>
+                                                <a href="@Url.Action("ProductList", "Product", new { stSearch = oCategoria.nombre })">@oCategoria.nombre</a>
                                                 <a data-toggle="collapse" data-parent="#accordion" href="#Collapse_@oCategoria.idCategoria"><i class="pull-right fa fa-caret-down"></i></a>
 
                                             </p>

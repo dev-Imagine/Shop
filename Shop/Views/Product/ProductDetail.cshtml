@@ -41,8 +41,49 @@
                     </div>
                 </div>
                 <p>@oPro.SubCategoria.Categoria.nombre > @oPro.SubCategoria.nombre</p>
-                <a href="#" class="btn btn-primary btn-block btn-lg" style="font-size: 25px;">Add to Cart</a>
+                <div class="form-group">
+                    <select class="form-control" id="cantidad">
+
+                        @for (int i = 0; i < oPro.stockActual; i++)
+                        {
+                            <option value="@(i+1)">@(i + 1)</option>
+                        }
+                    </select>
+                </div>
+                <button id="btnAddProduct" onclick="AddToCart()" class="btn btn-primary btn-block btn-lg" style="font-size: 25px;">Add to Cart</button>
             </div>
         </div>
     </div>
 </div>
+@section scripts{
+    <script>
+        function AddToCart() {
+            var cantidad = document.getElementById("cantidad").value;
+            $.ajax({
+            type: 'POST',
+            url: "@Url.Action("AddProduct", "Sell")",
+                data: { "idProducto": @oPro.idProducto, "cantidad": cantidad },
+                success: function (data) {
+                    console.log(data);
+                    if (data) {
+                        swal("Exito", "Producto agregado", "success");
+                    }
+                    else
+                    {
+                        swal("Error!", data, "error");
+                    }
+                },
+
+                beforeSend: function () {
+                    document.getElementById("btnAddProduct").disabled = true;
+                },
+                complete: function () {
+                    document.getElementById("btnAddProduct").disabled = false;
+                },
+                error: function () {
+                    swal("Ocurrió un error", "El producto no ha sido agregado al carrito", "error");
+                }
+            });
+        }
+    </script>
+    }

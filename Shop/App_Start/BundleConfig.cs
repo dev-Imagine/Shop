@@ -26,6 +26,8 @@ namespace Shop
                           "~/Content/css/simple-sidebar.css",
                           "~/Content/css/style.css"
                         ));
+            bundles.Add(new StyleBundle("~/css/sweetAlert").Include(
+                        "~/Content/css/sweetalert.css"));
 
             // JS
             bundles.Add(new ScriptBundle("~/js/bootstrap").Include(
@@ -47,6 +49,8 @@ namespace Shop
 
             bundles.Add(new ScriptBundle("~/js/main").Include(
                         "~/Content/js/main.js"));
+            bundles.Add(new ScriptBundle("~/js/sweetAlert").Include(
+                       "~/Content/js/sweetalert.min.js"));
 
         }
     }

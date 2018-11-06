@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    Shop.Models.Venta oVenta = (Shop.Models.Venta)Session["Cart"];
+    int cantProductos = 0;
+    if (oVenta != null)
+    {
+        cantProductos = oVenta.DetalleVenta.Sum(x => x.cantidad);
+    }
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -18,9 +26,10 @@
     @Styles.Render("~/css/fontawesome")
     @Styles.Render("~/css/style")
     @Scripts.Render("~/js/ModernizrJs")
+    @Styles.Render("~/css/sweetAlert")
 
 </head>
-<body >
+<body>
     <div class="container ">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="@Url.Action("Index", "Home")">Shop</a>
@@ -30,7 +39,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <form action="@Url.Action("ProductList","Product")" method="post" class="form-inline my-2 my-lg-0 mr-auto w-100" autocomplete="off">
+                <form action="@Url.Action("ProductList","Product")" method="get" class="form-inline my-2 my-lg-0 mr-auto w-100" autocomplete="off">
 
                     <div class="input-group" style="margin-left: auto; margin-right: auto; width:95%;">
                         <input type="text" minlength=4 required class="form-control" name="stSearch" placeholder="Buscar..." aria-label="Buscar">
@@ -40,52 +49,46 @@
                     </div>
 
                 </form>
-               
-                <div class="shopping-cart dropdown" >
-                    <a data-toggle="dropdown" id="visualizarCarrito" role="button" class="btn cart"><span><small>0</small><i class="fa fa-shopping-cart"></i></span></a>
+
+                <div class="shopping-cart dropdown">
+                    <a data-toggle="dropdown" id="visualizarCarrito" role="button" class="btn cart">
+                        <span>
+                            <small>@cantProductos</small>
+                            <i class="fa fa-shopping-cart"></i> 
+                        </span>
+                    </a>
 
                     <div class="dropdown-menu dropdown-menu-right animated fadeInDown" role="menu" aria-labelledby="visualizarCarrito">
                         <ul class="dropdown-product">
-                            <li>
-                                <div class="dw-product-box">
-                                    <div class="u-img">
-                                        <img class="img-fluid img-circle" style="width:50px" src="~/Content/images/product-2.jpg" alt="product">
-                                    </div>
-                                    <div class="u-text">
-                                        <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
-                                        <p class="text-muted">$1200 c/u <a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="dw-product-box">
-                                    <div class="u-img">
-                                        <img class="img-fluid img-circle" style="width:50px" src="~/Content/images/product-2.jpg" alt="product">
-                                    </div>
-                                    <div class="u-text">
-                                        <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
-                                        <p class="text-muted">$1200 c/u <a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="dw-product-box">
-                                    <div class="u-img">
-                                        <img class="img-fluid img-circle" style="width:50px" src="~/Content/images/product-2.jpg" alt="product">
-                                    </div>
-                                    <div class="u-text">
-                                        <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
-                                        <p class="text-muted">$1200 c/u <a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li style="margin-bottom: 0px;">
-                                <button class="btn btn-primary btn-block" style="margin-top:0px; margin-bottom:0px;" type="button" onclick="location.href='@Url.Action("Cart", "Sell")'">Comprar ahora</button>
-                            </li>
-                            @*<li class="text-muted text-center">
-                                <p style="font-size:50px"><i class="fa fa-cart-arrow-down"></i></p>
-                                <p>Carrito vacío</p>
-                            </li>*@
+                            @if (oVenta == null || oVenta.DetalleVenta.Count == 0)
+                            {
+                                <li class="text-muted text-center">
+                                    <p style="font-size:50px"><i class="fa fa-cart-arrow-down"></i></p>
+                                    <p>Carrito vacío</p>
+                                </li>
+                            }
+                            else
+                            {
+                                foreach (Shop.Models.DetalleVenta oDetalle in oVenta.DetalleVenta)
+                                {
+                                    <li>
+                                        <div class="dw-product-box">
+                                            <div class="u-img">
+                                                <img class="img-fluid img-circle" style="width:50px" src="~/Images/Product/@oDetalle.Producto.Imagen.Where(x=> x.principal == true).FirstOrDefault().archivo" alt="product">
+                                            </div>
+                                            <div class="u-text">
+                                                <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">@oDetalle.Producto.nombre (@("x" + oDetalle.cantidad))</h4>
+                                                <p class="text-muted">$@Convert.ToInt32(oDetalle.precioUnitario) c/u <a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+
+                                <li style="margin-bottom: 0px;">
+                                    <button class="btn btn-primary btn-block" style="margin-top:0px; margin-bottom:0px;" type="button" onclick="location.href='@Url.Action("Cart", "Sell")'">Comprar ahora</button>
+                                </li>
+                            }
+
                         </ul>
                     </div>
 
@@ -95,10 +98,10 @@
     </div>
 
 
- @RenderBody()
-    
-       
-    
+    @RenderBody()
+
+
+
 
     <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="fa fa-angle-up"></i></a>
@@ -108,6 +111,7 @@
     @Scripts.Render("~/js/jQuery")
     @Scripts.Render("~/js/bootstrap")
     @Scripts.Render("~/js/carousel")
+    @Scripts.Render("~/js/sweetAlert")
     @Scripts.Render("~/js/main")
 
 

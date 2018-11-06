@@ -72,10 +72,12 @@
     <div class="owl-carousel">
         @foreach (Shop.Models.Categoria oCat in (List<Shop.Models.Categoria>)ViewBag.lstCategories)
         {
-            <div class="item" >
+        <div class="item">
+            <a href="@Url.Action("ProductList", "Product", new { stSearch = oCat.nombre })">
                 <img style="max-width:100px; max-height:100px; margin: auto;" src=~/Images/Categories/@oCat.nombreImagen>
                 <p>@oCat.nombre</p>
-            </div>
+            </a>
+        </div>
         }
     </div>
 </div>
@@ -341,5 +343,10 @@
                 }
             }
         })
+
+        function SubmitCategoria(id) {
+            console.log(id)
+            document.getElementById(id).submit();
+        }
     </script>
     }

@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Shop.Models.Venta oVenta = (Shop.Models.Venta)ViewBag.Venta;
 }
 <link href="~/Content/css/paymentMethodsAr.css" rel="stylesheet" />
 <br />
@@ -11,47 +12,25 @@
         @*CARRITO*@
         <div class="col-md-8 text-center">
             <ul class="dropdown-product">
-                <li>
-                    <div class="dw-product-box">
-                        <div class="u-img text-center">
-                            <img class="img-fluid img-circle" style="width:100px; margin-bottom: 9px;" src="~/Content/images/product-2.jpg" alt="product">
-                        </div>
-                        <div class="u-text" style="vertical-align: text-top;">
-                            <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
-                            <p class="text-muted">$1200 c/u <span class="pull-right">$2400</span></p>
-                            <p class="text-muted">Camperas > Hombre<a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
+                @foreach (Shop.Models.DetalleVenta oDetalle in oVenta.DetalleVenta)
+                {
+                    <li>
+                        <div class="dw-product-box">
+                            <div class="u-img text-center">
+                                <img class="img-fluid img-circle" style="width:100px; margin-bottom: 9px;" src="~/Images/Product/@oDetalle.Producto.Imagen.Where(x=> x.principal == true).FirstOrDefault().archivo" alt="product">
+                            </div>
+                            <div class="u-text" style="vertical-align: text-top;">
+                                <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">@oDetalle.Producto.nombre (@("x" + oDetalle.cantidad))</h4>
+                                <p class="text-muted">$@Convert.ToInt32(oDetalle.precioUnitario) c/u <span class="pull-right">$@Convert.ToInt32(oDetalle.subTotal)</span></p>
+                                <p class="text-muted">@oDetalle.Producto.SubCategoria.Categoria.nombre > @oDetalle.Producto.SubCategoria.nombre<a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
 
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="dw-product-box">
-                        <div class="u-img text-center">
-                            <img class="img-fluid img-circle" style="width:100px; margin-bottom: 9px;" src="~/Content/images/product-2.jpg" alt="product">
-                        </div>
-                        <div class="u-text" style="vertical-align: text-top;">
-                            <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
-                            <p class="text-muted">$1200 c/u <span class="pull-right">$2400</span></p>
-                            <p class="text-muted">Camperas > Hombre<a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
+                    </li>
+                }
 
-                        </div>
-                    </div>
-                </li>
                 <li>
-                    <div class="dw-product-box">
-                        <div class="u-img text-center">
-                            <img class="img-fluid img-circle" style="width:100px; margin-bottom: 9px;" src="~/Content/images/product-2.jpg" alt="product">
-                        </div>
-                        <div class="u-text" style="vertical-align: text-top;">
-                            <h4 style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">Campera adidas (x2)</h4>
-                            <p class="text-muted">$1200 c/u <span class="pull-right">$2400</span></p>
-                            <p class="text-muted">Camperas > Hombre<a href="#" class="pull-right"><i class="fa fa-times"></i></a></p>
-
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <span class="price" style="color: #484848; margin-bottom: 10px;">Total $7200</span>
+                    <span class="price" style="color: #484848; margin-bottom: 10px;">Total $@Convert.ToInt32(oVenta.montoTotal)</span>
                 </li>
 
                 <li style="margin-bottom: 0px;">
@@ -71,7 +50,7 @@
             <hr />
             <form method="post">
                 <div class="text-center" style="margin-left: auto; margin-right: auto; width:95%;">
-                    <h4><i class="fa fa-archive"></i> Recibí tus productos en tu domicilio</h4>
+                    <h4><i class="fa fa-archive"></i> Recibí los productos en tu domicilio</h4>
                     <img class="img-fluid" style="max-width:150px" src="~/Content/images/MercadoEnvios.png" />
                     <br />
                     <p style="margin-bottom:0px;" class="text-muted"> Calular costo de envío:</p>
