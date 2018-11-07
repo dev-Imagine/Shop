@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Shop.Models;
 using Shop.Services;
+using mercadopago;
 
 namespace Shop.Controllers
 {
@@ -17,6 +17,10 @@ namespace Shop.Controllers
             {
                 ViewBag.Venta = oVenta;
             }
+            return View();
+        }
+        public ActionResult EndPurchase()
+        {
             return View();
         }
         // METODOS
@@ -83,6 +87,61 @@ namespace Shop.Controllers
             catch (Exception)
             {
                 return Json("Ocurrió un erro al quitar el producto.");
+            }
+        }
+        [HttpPost]
+        public ActionResult PayMercadoPago()
+        {
+            try
+            {
+                Venta oVenta = (Venta)Session["Cart"];
+                if (oVenta == null || oVenta.DetalleVenta.Count == 0)
+                {
+                    return RedirectToAction("Cart", "Sell");
+                }
+                string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
+                MP mp = new MP("3825884689807039", "2aLAWWtUxSs4ZbXjSXQRVilQCG1RdSlz");
+                String preferenceData =
+                    "{\"items\":" +
+                        "[";
+
+                foreach (DetalleVenta oDetalleVenta in oVenta.DetalleVenta)
+                {
+                    // Item
+                    preferenceData += "{" +
+                            "\"title\":\"" + oDetalleVenta.Producto.nombre + "\"," +
+                            "\"quantity\":" + oDetalleVenta.cantidad + "," +
+                            "\"currency_id\":\"ARS\"," +
+                            "\"unit_price\":" + Convert.ToUInt32((oDetalleVenta.precioUnitario) - ((oDetalleVenta.precioUnitario * oDetalleVenta.Producto.descuento) / 100)) + "," +
+                            "\"id\":" + oDetalleVenta.idProducto + "," +
+                            "\"picture_url\":\"" + baseUrl + "Images/Product/"+ oDetalleVenta.Producto.Imagen.Where(x=> x.principal == true).FirstOrDefault().archivo + "\"," +
+                            "},";
+                }
+                preferenceData +=  "]," +
+                    "\"shipments\":{" +
+                        "\"mode\":\"me2\"," +
+                        "\"dimensions\":\"30x30x30,500\"," +
+                        "\"local_pickup\":true," +
+                        "\"free_methods\":[" +
+                            "{\"id\":73328}" +
+                        "]," +
+                    "\"default_shipping_method\":73328," +
+                    "\"zip_code\":\"5700\"" +
+                    "}," +
+                    "\"back_urls\":{" +
+                            "\"success\": \"" + baseUrl + "Sell/EndPurchase" + "\"" +
+                    "}," +
+                    "\"auto_return\":\"approved\"," +
+                    "}";
+
+                Hashtable preference = mp.createPreference(preferenceData);
+                string linkMP = ((Hashtable)preference["response"])["init_point"].ToString();
+                return Redirect(linkMP);
+            }
+            catch (Exception)
+            {
+                Session["Cart"] = null;
+                return RedirectToAction("Index", "Home");
             }
         }
     }

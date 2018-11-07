@@ -70,7 +70,9 @@
                     </li>
 
                     <li style="margin-bottom: 0px;">
-                        <button class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;font-size: 25px; width: 80%;" type="submit">Pagar</button>
+                        <form method="post" action="@Url.Action("PayMercadoPago","Sell")">
+                            <button class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;font-size: 25px; width: 80%;" type="submit">Pagar</button>
+                        </form>
                         <br /><br /><br /><br />
                     </li>
                 }
