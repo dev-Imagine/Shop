@@ -17,8 +17,8 @@ namespace Shop.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Producto()
         {
-            this.Imagen = new HashSet<Imagen>();
             this.DetalleVenta = new HashSet<DetalleVenta>();
+            this.Imagen = new HashSet<Imagen>();
         }
     
         public int idProducto { get; set; }
@@ -30,11 +30,15 @@ namespace Shop.Models
         public int stockIdeal { get; set; }
         public string descripcion { get; set; }
         public int descuento { get; set; }
+        public int ME_alto { get; set; }
+        public int ME_ancho { get; set; }
+        public int ME_largo { get; set; }
+        public int ME_peso { get; set; }
     
-        public virtual SubCategoria SubCategoria { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Imagen> Imagen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetalleVenta> DetalleVenta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Imagen> Imagen { get; set; }
+        public virtual SubCategoria SubCategoria { get; set; }
     }
 }

@@ -88,22 +88,48 @@
                 <p>Tarjeta de crédito en hasta 12 cuotas<br />Tarjeta de débito<br />Efectivo en puntos de pago</p>
             </div>
             <hr />
-            <form method="post">
-                <div class="text-center" style="margin-left: auto; margin-right: auto; width:95%;">
-                    <h4><i class="fa fa-archive"></i> Recibí los productos en tu domicilio</h4>
-                    <img class="img-fluid" style="max-width:150px" src="~/Content/images/MercadoEnvios.png" />
-                    <br />
-                    <p style="margin-bottom:0px;" class="text-muted"> Calular costo de envío:</p>
+            <div class="text-center" style="margin-left: auto; margin-right: auto; width:95%;">
+                <h4><i class="fa fa-archive"></i> Recibí los productos en tu domicilio</h4>
+                <img class="img-fluid" style="max-width:150px" src="~/Content/images/MercadoEnvios.png" />
+                <br />
+                <p style="margin-bottom:0px;" class="text-muted"> Calular costo de envío:</p>
+            </div>
+            <div class="input-group" style="margin-left: auto; margin-right: auto; width:95%;">
+                <input id="zip_code" type="text" class="form-control" placeholder="Código postal" aria-label="Código postal">
+                <div class="input-group-append">
+                    <button id="btnCalcular" class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;" onclick="calcularEnvio()" ><i style="font-size:22px" class="fa fa-truck"></i>&nbsp;&nbsp; Calcular</button>
                 </div>
-                <div class="input-group" style="margin-left: auto; margin-right: auto; width:95%;">
-                    <input type="text" class="form-control" placeholder="Código postal" aria-label="Código postal">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" style="margin-top:0px; margin-bottom:0px;" type="submit"><i style="font-size:22px" class="fa fa-truck"></i>&nbsp;&nbsp; Calcular</button>
-                    </div>
-                </div>
-                <p class="text-muted text-center">Costo: $320</p>
-            </form>
-            <hr />
+            </div>
+            <div id="div-Shipment" class="container" style="font-size: 18px;">
+                <hr />
+                <br />
+            </div>
         </div>
     </div>
 </div>
+@section scripts{
+    <script>
+        function calcularEnvio() {
+            var zip_code = document.getElementById("zip_code").value;
+            $.ajax({
+            type: 'POST',
+            url: "@Url.Action("ShippingCost", "Sell")",
+                data: { "zip_code": zip_code },
+                success: function (data) {
+                    document.getElementById("div-Shipment").innerHTML = data;
+                },
+
+                beforeSend: function () {
+                    document.getElementById("btnCalcular").disabled = true;
+                },
+                complete: function () {
+                    document.getElementById("btnCalcular").disabled = false;
+                },
+                error: function () {
+                    document.getElementById("zip_code").value = '';
+                    document.getElementById("div-Shipment").innerHTML = '<hr /><br />';
+                }
+            });
+        }
+    </script>
+    }

@@ -10,21 +10,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Producto">
-      <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Producto">
-        <MappingFragment StoreEntitySet="Producto">
-          <ScalarProperty Name="descuento" ColumnName="descuento" />
-          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-          <ScalarProperty Name="stockIdeal" ColumnName="stockIdeal" />
-          <ScalarProperty Name="stockActual" ColumnName="stockActual" />
-          <ScalarProperty Name="stockMinimo" ColumnName="stockMinimo" />
-          <ScalarProperty Name="precio" ColumnName="precio" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="idSubCategoria" ColumnName="idSubCategoria" />
-          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Provincia">
       <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Provincia">
         <MappingFragment StoreEntitySet="Provincia">
@@ -60,23 +45,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Venta">
-      <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Venta">
-        <MappingFragment StoreEntitySet="Venta">
-          <ScalarProperty Name="direccionShipments" ColumnName="direccionShipments" />
-          <ScalarProperty Name="emailComprador" ColumnName="emailComprador" />
-          <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
-          <ScalarProperty Name="idLocalidad" ColumnName="idLocalidad" />
-          <ScalarProperty Name="collectorId" ColumnName="collectorId" />
-          <ScalarProperty Name="orderId" ColumnName="orderId" />
-          <ScalarProperty Name="estadoPayments" ColumnName="estadoPayments" />
-          <ScalarProperty Name="estadoShipments" ColumnName="estadoShipments" />
-          <ScalarProperty Name="estadoOrder" ColumnName="estadoOrder" />
-          <ScalarProperty Name="fecha" ColumnName="fecha" />
-          <ScalarProperty Name="idVenta" ColumnName="idVenta" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Imagen">
       <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Imagen">
         <MappingFragment StoreEntitySet="Imagen">
@@ -106,6 +74,40 @@
           <ScalarProperty Name="idProducto" ColumnName="idProducto" />
           <ScalarProperty Name="idVenta" ColumnName="idVenta" />
           <ScalarProperty Name="idDetalleVenta" ColumnName="idDetalleVenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="ME_peso" ColumnName="ME_peso" />
+          <ScalarProperty Name="ME_largo" ColumnName="ME_largo" />
+          <ScalarProperty Name="ME_ancho" ColumnName="ME_ancho" />
+          <ScalarProperty Name="ME_alto" ColumnName="ME_alto" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="stockIdeal" ColumnName="stockIdeal" />
+          <ScalarProperty Name="stockActual" ColumnName="stockActual" />
+          <ScalarProperty Name="stockMinimo" ColumnName="stockMinimo" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idSubCategoria" ColumnName="idSubCategoria" />
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Venta">
+      <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Venta">
+        <MappingFragment StoreEntitySet="Venta">
+          <ScalarProperty Name="MP_order_id" ColumnName="MP_order_id" />
+          <ScalarProperty Name="MP_state_shipments" ColumnName="MP_state_shipments" />
+          <ScalarProperty Name="MP_state_order" ColumnName="MP_state_order" />
+          <ScalarProperty Name="idLocalidad" ColumnName="idLocalidad" />
+          <ScalarProperty Name="direccionShipments" ColumnName="direccionShipments" />
+          <ScalarProperty Name="emailComprador" ColumnName="emailComprador" />
+          <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="idVenta" ColumnName="idVenta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

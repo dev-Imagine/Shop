@@ -50,6 +50,10 @@
     <Property Name="stockIdeal" Type="int" Nullable="false" />
     <Property Name="descripcion" Type="varchar(max)" Nullable="false" />
     <Property Name="descuento" Type="int" Nullable="false" />
+    <Property Name="ME_alto" Type="int" Nullable="false" />
+    <Property Name="ME_ancho" Type="int" Nullable="false" />
+    <Property Name="ME_largo" Type="int" Nullable="false" />
+    <Property Name="ME_peso" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Provincia">
     <Key>
@@ -88,15 +92,13 @@
     </Key>
     <Property Name="idVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fecha" Type="datetime" Nullable="false" />
-    <Property Name="estadoOrder" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="estadoShipments" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="estadoPayments" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="orderId" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="collectorId" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="idLocalidad" Type="int" Nullable="false" />
     <Property Name="montoTotal" Type="money" Nullable="false" />
     <Property Name="emailComprador" Type="varchar(max)" Nullable="false" />
     <Property Name="direccionShipments" Type="varchar(max)" Nullable="false" />
+    <Property Name="idLocalidad" Type="int" Nullable="false" />
+    <Property Name="MP_state_order" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MP_state_shipments" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MP_order_id" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_DetalleVenta_Producto">
     <End Role="Producto" Type="Self.Producto" Multiplicity="1" />

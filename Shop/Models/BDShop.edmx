@@ -55,6 +55,10 @@
           <Property Name="stockIdeal" Type="int" Nullable="false" />
           <Property Name="descripcion" Type="varchar(max)" Nullable="false" />
           <Property Name="descuento" Type="int" Nullable="false" />
+          <Property Name="ME_alto" Type="int" Nullable="false" />
+          <Property Name="ME_ancho" Type="int" Nullable="false" />
+          <Property Name="ME_largo" Type="int" Nullable="false" />
+          <Property Name="ME_peso" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Provincia">
           <Key>
@@ -93,15 +97,13 @@
           </Key>
           <Property Name="idVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fecha" Type="datetime" Nullable="false" />
-          <Property Name="estadoOrder" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="estadoShipments" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="estadoPayments" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="orderId" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="collectorId" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="idLocalidad" Type="int" Nullable="false" />
           <Property Name="montoTotal" Type="money" Nullable="false" />
           <Property Name="emailComprador" Type="varchar(max)" Nullable="false" />
           <Property Name="direccionShipments" Type="varchar(max)" Nullable="false" />
+          <Property Name="idLocalidad" Type="int" Nullable="false" />
+          <Property Name="MP_state_order" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MP_state_shipments" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MP_order_id" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_DetalleVenta_Producto">
           <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
@@ -233,15 +235,34 @@
       <Schema Namespace="DB_A363ED_ShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DB_A363ED_ShopEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="Localidad" EntityType="DB_A363ED_ShopModel.Localidad" />
-          <EntitySet Name="Producto" EntityType="DB_A363ED_ShopModel.Producto" />
           <EntitySet Name="Provincia" EntityType="DB_A363ED_ShopModel.Provincia" />
           <EntitySet Name="SubCategoria" EntityType="DB_A363ED_ShopModel.SubCategoria" />
           <EntitySet Name="Suscriptor" EntityType="DB_A363ED_ShopModel.Suscriptor" />
           <EntitySet Name="Usuario" EntityType="DB_A363ED_ShopModel.Usuario" />
-          <EntitySet Name="Venta" EntityType="DB_A363ED_ShopModel.Venta" />
           <AssociationSet Name="FK_Localidad_Provincia" Association="DB_A363ED_ShopModel.FK_Localidad_Provincia">
             <End Role="Provincia" EntitySet="Provincia" />
             <End Role="Localidad" EntitySet="Localidad" />
+          </AssociationSet>
+          <EntitySet Name="Imagen" EntityType="DB_A363ED_ShopModel.Imagen" />
+          <EntitySet Name="Categoria" EntityType="DB_A363ED_ShopModel.Categoria" />
+          <AssociationSet Name="FK_SubCategoria_Categoria" Association="DB_A363ED_ShopModel.FK_SubCategoria_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="SubCategoria" EntitySet="SubCategoria" />
+          </AssociationSet>
+          <EntitySet Name="DetalleVenta" EntityType="DB_A363ED_ShopModel.DetalleVenta" />
+          <EntitySet Name="Producto" EntityType="DB_A363ED_ShopModel.Producto" />
+          <EntitySet Name="Venta" EntityType="DB_A363ED_ShopModel.Venta" />
+          <AssociationSet Name="FK_DetalleVenta_Producto" Association="DB_A363ED_ShopModel.FK_DetalleVenta_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleVenta_Venta" Association="DB_A363ED_ShopModel.FK_DetalleVenta_Venta">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Imagen_Producto" Association="DB_A363ED_ShopModel.FK_Imagen_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Imagen" EntitySet="Imagen" />
           </AssociationSet>
           <AssociationSet Name="FK_Venta_Localidad" Association="DB_A363ED_ShopModel.FK_Venta_Localidad">
             <End Role="Localidad" EntitySet="Localidad" />
@@ -251,26 +272,7 @@
             <End Role="SubCategoria" EntitySet="SubCategoria" />
             <End Role="Producto" EntitySet="Producto" />
           </AssociationSet>
-          <EntitySet Name="Imagen" EntityType="DB_A363ED_ShopModel.Imagen" />
-          <AssociationSet Name="FK_Imagen_Producto" Association="DB_A363ED_ShopModel.FK_Imagen_Producto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="Imagen" EntitySet="Imagen" />
-          </AssociationSet>
-          <EntitySet Name="Categoria" EntityType="DB_A363ED_ShopModel.Categoria" />
-          <AssociationSet Name="FK_SubCategoria_Categoria" Association="DB_A363ED_ShopModel.FK_SubCategoria_Categoria">
-            <End Role="Categoria" EntitySet="Categoria" />
-            <End Role="SubCategoria" EntitySet="SubCategoria" />
-          </AssociationSet>
-          <EntitySet Name="DetalleVenta" EntityType="DB_A363ED_ShopModel.DetalleVenta" />
-          <AssociationSet Name="FK_DetalleVenta_Producto" Association="DB_A363ED_ShopModel.FK_DetalleVenta_Producto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="DetalleVenta" EntitySet="DetalleVenta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DetalleVenta_Venta" Association="DB_A363ED_ShopModel.FK_DetalleVenta_Venta">
-            <End Role="Venta" EntitySet="Venta" />
-            <End Role="DetalleVenta" EntitySet="DetalleVenta" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Localidad">
           <Key>
             <PropertyRef Name="idLocalidad" />
@@ -280,23 +282,6 @@
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Provincia" Relationship="DB_A363ED_ShopModel.FK_Localidad_Provincia" FromRole="Localidad" ToRole="Provincia" />
           <NavigationProperty Name="Venta" Relationship="DB_A363ED_ShopModel.FK_Venta_Localidad" FromRole="Localidad" ToRole="Venta" />
-        </EntityType>
-        <EntityType Name="Producto">
-          <Key>
-            <PropertyRef Name="idProducto" />
-          </Key>
-          <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idSubCategoria" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="stockMinimo" Type="Int32" Nullable="false" />
-          <Property Name="stockActual" Type="Int32" Nullable="false" />
-          <Property Name="stockIdeal" Type="Int32" Nullable="false" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="descuento" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="SubCategoria" Relationship="DB_A363ED_ShopModel.FK_Producto_SubCategoria" FromRole="Producto" ToRole="SubCategoria" />
-          <NavigationProperty Name="Imagen" Relationship="DB_A363ED_ShopModel.FK_Imagen_Producto" FromRole="Producto" ToRole="Imagen" />
-          <NavigationProperty Name="DetalleVenta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Producto" FromRole="Producto" ToRole="DetalleVenta" />
         </EntityType>
         <EntityType Name="Provincia">
           <Key>
@@ -313,8 +298,8 @@
           <Property Name="idSubCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idCategoria" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Producto" Relationship="DB_A363ED_ShopModel.FK_Producto_SubCategoria" FromRole="SubCategoria" ToRole="Producto" />
           <NavigationProperty Name="Categoria" Relationship="DB_A363ED_ShopModel.FK_SubCategoria_Categoria" FromRole="SubCategoria" ToRole="Categoria" />
+          <NavigationProperty Name="Producto" Relationship="DB_A363ED_ShopModel.FK_Producto_SubCategoria" FromRole="SubCategoria" ToRole="Producto" />
         </EntityType>
         <EntityType Name="Suscriptor">
           <Key>
@@ -332,24 +317,6 @@
           <Property Name="contraseña" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Venta">
-          <Key>
-            <PropertyRef Name="idVenta" />
-          </Key>
-          <Property Name="idVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="estadoOrder" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="estadoShipments" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="estadoPayments" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="orderId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="collectorId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="idLocalidad" Type="Int32" Nullable="false" />
-          <Property Name="montoTotal" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="emailComprador" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="direccionShipments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Localidad" Relationship="DB_A363ED_ShopModel.FK_Venta_Localidad" FromRole="Venta" ToRole="Localidad" />
-          <NavigationProperty Name="DetalleVenta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Venta" FromRole="Venta" ToRole="DetalleVenta" />
-        </EntityType>
         <Association Name="FK_Localidad_Provincia">
           <End Type="DB_A363ED_ShopModel.Provincia" Role="Provincia" Multiplicity="1" />
           <End Type="DB_A363ED_ShopModel.Localidad" Role="Localidad" Multiplicity="*" />
@@ -359,30 +326,6 @@
             </Principal>
             <Dependent Role="Localidad">
               <PropertyRef Name="idProvincia" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Venta_Localidad">
-          <End Type="DB_A363ED_ShopModel.Localidad" Role="Localidad" Multiplicity="1" />
-          <End Type="DB_A363ED_ShopModel.Venta" Role="Venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Localidad">
-              <PropertyRef Name="idLocalidad" />
-            </Principal>
-            <Dependent Role="Venta">
-              <PropertyRef Name="idLocalidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Producto_SubCategoria">
-          <End Type="DB_A363ED_ShopModel.SubCategoria" Role="SubCategoria" Multiplicity="1" />
-          <End Type="DB_A363ED_ShopModel.Producto" Role="Producto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SubCategoria">
-              <PropertyRef Name="idSubCategoria" />
-            </Principal>
-            <Dependent Role="Producto">
-              <PropertyRef Name="idSubCategoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -396,18 +339,6 @@
           <Property Name="principal" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Producto" Relationship="DB_A363ED_ShopModel.FK_Imagen_Producto" FromRole="Imagen" ToRole="Producto" />
         </EntityType>
-        <Association Name="FK_Imagen_Producto">
-          <End Type="DB_A363ED_ShopModel.Producto" Role="Producto" Multiplicity="1" />
-          <End Type="DB_A363ED_ShopModel.Imagen" Role="Imagen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producto">
-              <PropertyRef Name="idProducto" />
-            </Principal>
-            <Dependent Role="Imagen">
-              <PropertyRef Name="idProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Categoria">
           <Key>
             <PropertyRef Name="idCategoria" />
@@ -443,6 +374,43 @@
           <NavigationProperty Name="Producto" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Producto" FromRole="DetalleVenta" ToRole="Producto" />
           <NavigationProperty Name="Venta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Venta" FromRole="DetalleVenta" ToRole="Venta" />
         </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSubCategoria" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="stockMinimo" Type="Int32" Nullable="false" />
+          <Property Name="stockActual" Type="Int32" Nullable="false" />
+          <Property Name="stockIdeal" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descuento" Type="Int32" Nullable="false" />
+          <Property Name="ME_alto" Type="Int32" Nullable="false" />
+          <Property Name="ME_ancho" Type="Int32" Nullable="false" />
+          <Property Name="ME_largo" Type="Int32" Nullable="false" />
+          <Property Name="ME_peso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetalleVenta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Producto" FromRole="Producto" ToRole="DetalleVenta" />
+          <NavigationProperty Name="Imagen" Relationship="DB_A363ED_ShopModel.FK_Imagen_Producto" FromRole="Producto" ToRole="Imagen" />
+          <NavigationProperty Name="SubCategoria" Relationship="DB_A363ED_ShopModel.FK_Producto_SubCategoria" FromRole="Producto" ToRole="SubCategoria" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="idVenta" />
+          </Key>
+          <Property Name="idVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="montoTotal" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="emailComprador" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="direccionShipments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idLocalidad" Type="Int32" Nullable="false" />
+          <Property Name="MP_state_order" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MP_state_shipments" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MP_order_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DetalleVenta" Relationship="DB_A363ED_ShopModel.FK_DetalleVenta_Venta" FromRole="Venta" ToRole="DetalleVenta" />
+          <NavigationProperty Name="Localidad" Relationship="DB_A363ED_ShopModel.FK_Venta_Localidad" FromRole="Venta" ToRole="Localidad" />
+        </EntityType>
         <Association Name="FK_DetalleVenta_Producto">
           <End Type="DB_A363ED_ShopModel.Producto" Role="Producto" Multiplicity="1" />
           <End Type="DB_A363ED_ShopModel.DetalleVenta" Role="DetalleVenta" Multiplicity="*" />
@@ -467,7 +435,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Imagen_Producto">
+          <End Type="DB_A363ED_ShopModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="DB_A363ED_ShopModel.Imagen" Role="Imagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="Imagen">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venta_Localidad">
+          <End Type="DB_A363ED_ShopModel.Localidad" Role="Localidad" Multiplicity="1" />
+          <End Type="DB_A363ED_ShopModel.Venta" Role="Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localidad">
+              <PropertyRef Name="idLocalidad" />
+            </Principal>
+            <Dependent Role="Venta">
+              <PropertyRef Name="idLocalidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_SubCategoria">
+          <End Type="DB_A363ED_ShopModel.SubCategoria" Role="SubCategoria" Multiplicity="1" />
+          <End Type="DB_A363ED_ShopModel.Producto" Role="Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategoria">
+              <PropertyRef Name="idSubCategoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="idSubCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -479,21 +483,6 @@
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idProvincia" ColumnName="idProvincia" />
                 <ScalarProperty Name="idLocalidad" ColumnName="idLocalidad" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Producto">
-            <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Producto">
-              <MappingFragment StoreEntitySet="Producto">
-                <ScalarProperty Name="descuento" ColumnName="descuento" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="stockIdeal" ColumnName="stockIdeal" />
-                <ScalarProperty Name="stockActual" ColumnName="stockActual" />
-                <ScalarProperty Name="stockMinimo" ColumnName="stockMinimo" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="idSubCategoria" ColumnName="idSubCategoria" />
-                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -532,23 +521,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Venta">
-            <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Venta">
-              <MappingFragment StoreEntitySet="Venta">
-                <ScalarProperty Name="direccionShipments" ColumnName="direccionShipments" />
-                <ScalarProperty Name="emailComprador" ColumnName="emailComprador" />
-                <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
-                <ScalarProperty Name="idLocalidad" ColumnName="idLocalidad" />
-                <ScalarProperty Name="collectorId" ColumnName="collectorId" />
-                <ScalarProperty Name="orderId" ColumnName="orderId" />
-                <ScalarProperty Name="estadoPayments" ColumnName="estadoPayments" />
-                <ScalarProperty Name="estadoShipments" ColumnName="estadoShipments" />
-                <ScalarProperty Name="estadoOrder" ColumnName="estadoOrder" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="idVenta" ColumnName="idVenta" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Imagen">
             <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Imagen">
               <MappingFragment StoreEntitySet="Imagen">
@@ -578,6 +550,40 @@
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
                 <ScalarProperty Name="idVenta" ColumnName="idVenta" />
                 <ScalarProperty Name="idDetalleVenta" ColumnName="idDetalleVenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="ME_peso" ColumnName="ME_peso" />
+                <ScalarProperty Name="ME_largo" ColumnName="ME_largo" />
+                <ScalarProperty Name="ME_ancho" ColumnName="ME_ancho" />
+                <ScalarProperty Name="ME_alto" ColumnName="ME_alto" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="stockIdeal" ColumnName="stockIdeal" />
+                <ScalarProperty Name="stockActual" ColumnName="stockActual" />
+                <ScalarProperty Name="stockMinimo" ColumnName="stockMinimo" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idSubCategoria" ColumnName="idSubCategoria" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Venta">
+            <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Venta">
+              <MappingFragment StoreEntitySet="Venta">
+                <ScalarProperty Name="MP_order_id" ColumnName="MP_order_id" />
+                <ScalarProperty Name="MP_state_shipments" ColumnName="MP_state_shipments" />
+                <ScalarProperty Name="MP_state_order" ColumnName="MP_state_order" />
+                <ScalarProperty Name="idLocalidad" ColumnName="idLocalidad" />
+                <ScalarProperty Name="direccionShipments" ColumnName="direccionShipments" />
+                <ScalarProperty Name="emailComprador" ColumnName="emailComprador" />
+                <ScalarProperty Name="montoTotal" ColumnName="montoTotal" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="idVenta" ColumnName="idVenta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
