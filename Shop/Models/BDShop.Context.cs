@@ -34,6 +34,7 @@ namespace Shop.Models
         public virtual DbSet<Categoria> Categoria { get; set; }
         public virtual DbSet<DetalleVenta> DetalleVenta { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
+        public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<Venta> Venta { get; set; }
     }
 }

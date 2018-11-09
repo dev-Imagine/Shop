@@ -186,6 +186,9 @@
     <Compile Include="Models\DetalleVenta.cs">
       <DependentUpon>BDShop.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Estado.cs">
+      <DependentUpon>BDShop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Imagen.cs">
       <DependentUpon>BDShop.tt</DependentUpon>
     </Compile>
@@ -349,6 +352,7 @@
     <Content Include="Views\Product\_PopUpGuardarModificarCategoria.cshtml" />
     <Content Include="Views\Sell\EndPurchase.cshtml" />
     <Content Include="Views\Sell\NotificacionPago.cshtml" />
+    <Content Include="Views\Admin\SalesList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

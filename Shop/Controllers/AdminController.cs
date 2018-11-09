@@ -17,8 +17,16 @@ namespace Shop.Controllers
             return View();
             
         }
+        public ActionResult SalesList()
+        {
+            srvVentas sVenta = new srvVentas();
+            List<Venta> st = sVenta.ObtenerVentas(1);
+            ViewBag.ventas = st;
+            return View();
+
+        }
 
         //vistas parciales
-        
+
     }
 }

@@ -96,12 +96,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Estado">
+      <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Estado">
+        <MappingFragment StoreEntitySet="Estado">
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Venta">
       <EntityTypeMapping TypeName="DB_A363ED_ShopModel.Venta">
         <MappingFragment StoreEntitySet="Venta">
           <ScalarProperty Name="MP_order_id" ColumnName="MP_order_id" />
           <ScalarProperty Name="MP_state_shipments" ColumnName="MP_state_shipments" />
           <ScalarProperty Name="MP_state_order" ColumnName="MP_state_order" />
+          <ScalarProperty Name="idEstado" ColumnName="idEstado" />
           <ScalarProperty Name="idLocalidad" ColumnName="idLocalidad" />
           <ScalarProperty Name="direccionShipments" ColumnName="direccionShipments" />
           <ScalarProperty Name="emailComprador" ColumnName="emailComprador" />

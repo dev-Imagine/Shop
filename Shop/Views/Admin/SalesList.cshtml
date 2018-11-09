@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Ventas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Shop.Models.Venta> lstVentas = (List<Shop.Models.Venta>)ViewBag.ventas;
+}
+
+@*falta que sea responsive y tambien se puede hacer que los items enten en un collapse*@
+
+
+<div class="container animate animate-box">
+        @foreach (Shop.Models.Venta oVenta in lstVentas)
+        {
+       
+    <div style="padding: .75rem 1.25rem;">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-3">@oVenta.emailComprador</h5>
+            <span class="pull-right price" style="margin-bottom: 0px; padding-bottom: 5px; padding-top: 5px; padding-left: 10px; padding-right: 10px; font-size: 15px;">ARS$@Convert.ToInt32(oVenta.montoTotal)</span>
+        </div>
+        @foreach (Shop.Models.DetalleVenta oDetalle in oVenta.DetalleVenta)
+        {
+            <div class="row">
+                <div class="col-4 col-md-2">
+                    <div class="u-img text-center">
+                        <a href="@Url.Action("ProductDetail", "Product", new { idProducto = oDetalle.Producto.idProducto })">
+                            <img class="img-fluid rounded " style="width:100px; margin-bottom: 9px;" src="~/Images/Product/@oDetalle.Producto.Imagen.Where(x=> x.principal == true).FirstOrDefault().archivo" alt="product">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-8 col-md-10">
+                    <div class="u-text" style="vertical-align: text-top;">
+                        <a href="@Url.Action("ProductDetail", "Product", new { idProducto = oDetalle.Producto.idProducto })">
+                            <p style="margin-bottom:0; text-overflow: ellipsis;white-space: nowrap; overflow: hidden;">@oDetalle.Producto.nombre (@("x" + oDetalle.cantidad))</p>
+                        </a>
+                        <p class="text-muted">
+                            @if (oDetalle.descuento > 0)
+                            {
+                                <span class="text-primary">(-@oDetalle.descuento%)</span>
+                                <span style="font-size: 17px;">
+                                    <span class="textDescuento">$@(Convert.ToInt32(oDetalle.precioUnitario) * oDetalle.cantidad)</span>
+                                    $@Convert.ToInt32(oDetalle.subTotal)
+                                </span>
+                            }
+                            else
+                            {
+                                <span style="font-size: 17px;">$@Convert.ToInt32(oDetalle.subTotal)</span>
+                            }
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <hr style="border-color: #d4d4d4;" />
+                </div>
+            </div>
+
+
+        }
+            <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1">@oVenta.direccionShipments</p>
+                <span class="pull-right">3 days ago</span>
+            </div>
+       
+
+        </div>
+        <hr />
+        }
+    </div>
+
+
+

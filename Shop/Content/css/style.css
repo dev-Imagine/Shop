@@ -602,7 +602,8 @@ div a.cart span small {
 }
 
 .product {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
+    cursor: pointer;
 }
 .product .product-grid {
   background-size: cover;

@@ -33,7 +33,7 @@
                             <div class="dw-product-box">
                                 <div class="u-img text-center">
                                     <a href="@Url.Action("ProductDetail", "Product", new { idProducto = oDetalle.Producto.idProducto })">
-                                        <img class="img-fluid img-circle" style="width:100px; margin-bottom: 9px;" src="~/Images/Product/@oDetalle.Producto.Imagen.Where(x=> x.principal == true).FirstOrDefault().archivo" alt="product">
+                                        <img class="img-fluid rounded " style="width:100px; margin-bottom: 9px;" src="~/Images/Product/@oDetalle.Producto.Imagen.Where(x=> x.principal == true).FirstOrDefault().archivo" alt="product">
                                     </a>
                                 </div>
                                 <div class="u-text" style="vertical-align: text-top;">

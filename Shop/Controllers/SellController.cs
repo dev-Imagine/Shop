@@ -36,6 +36,7 @@ namespace Shop.Controllers
                 if (topic == "payment")
                 {
                     MP mp = new MP(srvConfig.MP_client_id(), srvConfig.MP_client_secret());
+                    
                     // get info pago --> "Payment"
                     Hashtable Payment = mp.getPaymentInfo(id);
                     Payment = ((Hashtable)Payment["response"]);

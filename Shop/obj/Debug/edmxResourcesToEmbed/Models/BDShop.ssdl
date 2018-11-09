@@ -20,6 +20,14 @@
     <Property Name="precioUnitario" Type="money" Nullable="false" />
     <Property Name="descuento" Type="int" />
   </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="idEstado" />
+    </Key>
+    <Property Name="idEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="Imagen">
     <Key>
       <PropertyRef Name="idImagen" />
@@ -96,6 +104,7 @@
     <Property Name="emailComprador" Type="varchar(max)" Nullable="false" />
     <Property Name="direccionShipments" Type="varchar(max)" Nullable="false" />
     <Property Name="idLocalidad" Type="int" Nullable="false" />
+    <Property Name="idEstado" Type="int" Nullable="false" />
     <Property Name="MP_state_order" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="MP_state_shipments" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="MP_order_id" Type="varchar" MaxLength="50" Nullable="false" />
@@ -172,6 +181,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Venta_Estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="idEstado" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Venta_Localidad">
     <End Role="Localidad" Type="Self.Localidad" Multiplicity="1" />
     <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
@@ -187,6 +208,7 @@
   <EntityContainer Name="DB_A363ED_ShopModelStoreContainer">
     <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetalleVenta" EntityType="Self.DetalleVenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Imagen" EntityType="Self.Imagen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Localidad" EntityType="Self.Localidad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
@@ -218,6 +240,10 @@
     <AssociationSet Name="FK_SubCategoria_Categoria" Association="Self.FK_SubCategoria_Categoria">
       <End Role="Categoria" EntitySet="Categoria" />
       <End Role="SubCategoria" EntitySet="SubCategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venta_Estado" Association="Self.FK_Venta_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Venta" EntitySet="Venta" />
     </AssociationSet>
     <AssociationSet Name="FK_Venta_Localidad" Association="Self.FK_Venta_Localidad">
       <End Role="Localidad" EntitySet="Localidad" />
