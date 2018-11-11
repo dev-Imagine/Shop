@@ -201,3 +201,4 @@ D:\dev-imagine\Shop\Shop\obj\Debug\Shop.csprojResolveAssemblyReference.cache
 D:\dev-imagine\Shop\Shop\obj\Debug\Shop.dll
 D:\dev-imagine\Shop\Shop\obj\Debug\Shop.pdb
 D:\GitHub\Repositorios\Shop\Shop\bin\mercadopago.dll
+D:\dev-imagine\Shop\Shop\bin\mercadopago.dll

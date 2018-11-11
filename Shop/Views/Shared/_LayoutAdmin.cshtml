@@ -1,0 +1,147 @@
+﻿@{
+    
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Shop</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+
+    @Styles.Render("~/css/animate")
+    @Styles.Render("~/css/bootstrap")
+    @Styles.Render("~/css/fontawesome")
+    @Styles.Render("~/css/style")
+    @Scripts.Render("~/js/ModernizrJs")
+    @Styles.Render("~/css/sweetAlert")
+
+</head>
+<body>
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <aside class="col-12 col-md-12 p-0" style="background-color:#2d2d2d ">
+                    <nav class="navbar navbar-expand-lg navbar-dark flex-md-column flex-row align-items-start py-2">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            @*PONER OTRO ICONO*@
+
+                            <i style="font-size: 34px;" class="fa fa-filter"></i>
+                        </button>
+                        <div class="collapse navbar-collapse w-100" id="navbarNav">
+                            <ul class="navbar-nav flex-md-column navbar-nav w-100 justify-content-between">
+                                <li class="nav-item active">
+                                    <p class="nav-link" href="#">CATEGORÍAS</p>
+                                    <hr />
+
+                                    <div class="panel-group accordion-menu" id="accordion">
+                                        <p>
+                                            <span href="">Producto</span>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#Collapse_Producto"><i class="pull-right fa fa-caret-down"></i></a>
+
+                                        </p>
+                                        <div id="Collapse_Producto" class="collapse">
+                                            <ul style="list-style-type: none">
+                                                    <li><a href="@Url.Action("ViewProduct", "Admin")">Agregar producto</a></li>
+                                                    <li><a href="@Url.Action("ViewProduct", "Admin")">Lista de producto</a></li>    
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                </li>
+                                <li class="nav-item active">
+                                    <p class="nav-link" href="#">Ordenar por</p>
+                                    <hr />
+                                </li>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </aside>
+                <main class="col bg-faded py-3">
+                    <div id="fh5co-product">
+                        <div class="container-fluid">
+                            <div class="row" id="listProduct">
+                                @Html.Action("_ProductList", "Product", new { pageIndex = 0, pageSize = 3, stSearch = ViewBag.search })
+
+                            </div>
+                            <div id="progress" class="row" style="display:none;min-height:400px; width: 100%; height: 100%; background: url(../../Content/images/loader.gif) center no-repeat #fff;">
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    
+
+
+    @RenderBody()
+
+
+
+
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="fa fa-angle-up"></i></a>
+    </div>
+
+
+    @Scripts.Render("~/js/jQuery")
+    @Scripts.Render("~/js/bootstrap")
+    @Scripts.Render("~/js/carousel")
+    @Scripts.Render("~/js/sweetAlert")
+    @Scripts.Render("~/js/main")
+
+
+    @RenderSection("scripts", required: false)
+
+    <script>
+        
+    </script>
+
+    <footer id="fh5co-footer" class="fh5co-bg-section animated fadeInUp" style="padding:4em 0" role="contentinfo">
+        <div class="container">
+            <div class="row row-pb-md">
+                <div class="col-5 col-md-4 fh5co-widget">
+                    <h3>Shop.</h3>
+                    <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+                </div>
+                <div class="col-7 col-md-8">
+                    <ul class="fh5co-footer-links">
+                        <li><a href="@Url.Action("About", "Home")">About</a></li>
+                        <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                        <li><a href="@Url.Action("Services", "Home")">Services</a></li>
+                        <li><a href="@Url.Action("Cart", "Sell")">Cart</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="row copyright">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <ul class="fh5co-social-icons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+</body>
+
+
+
+</html>
+

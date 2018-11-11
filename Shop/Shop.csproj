@@ -218,6 +218,7 @@
     <Compile Include="Services\srvConfig.cs" />
     <Compile Include="Services\srvMetodosGenericos.cs" />
     <Compile Include="Services\srvProduct.cs" />
+    <Compile Include="Services\srvUsers.cs" />
     <Compile Include="Services\srvVentas.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -353,6 +354,8 @@
     <Content Include="Views\Sell\EndPurchase.cshtml" />
     <Content Include="Views\Sell\NotificacionPago.cshtml" />
     <Content Include="Views\Admin\SalesList.cshtml" />
+    <Content Include="Views\Admin\LogIn.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

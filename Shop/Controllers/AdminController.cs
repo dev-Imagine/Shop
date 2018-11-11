@@ -12,9 +12,19 @@ namespace Shop.Controllers
         // GET: Admin
         public ActionResult ViewProduct()
         {
-            srvCategories sCategoria = new srvCategories();
-            ViewBag.lstCategoria = sCategoria.ObtenerCategorias();
-            return View();
+            if (Session["Usuario"] != null)
+            {
+                srvCategories sCategoria = new srvCategories();
+                ViewBag.lstCategoria = sCategoria.ObtenerCategorias();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            
+            
             
         }
         public ActionResult SalesList()
@@ -26,6 +36,28 @@ namespace Shop.Controllers
 
         }
 
+        public ActionResult LogIn()
+        {
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult LogIn(Usuario oUser)
+        {
+            srvUsers sUser = new srvUsers();
+            Usuario oUs = new Usuario();
+            oUs = sUser.logIn(oUser);
+            if (oUs.idUsuario != 0)
+            {
+                Session["Usuario"] = oUs;
+            }
+            else
+            {
+                Session["Usuario"] = null;
+            }
+            return View();
+
+        }
         //vistas parciales
 
     }

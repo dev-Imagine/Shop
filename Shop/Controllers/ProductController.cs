@@ -143,7 +143,7 @@ namespace Shop.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult GuardarModificarProducto(Producto oProducto,  string precio, HttpPostedFileBase imagen)
+        public ActionResult GuardarModificarProducto(Producto oProducto,  string precio, List<HttpPostedFileBase> imagen)
         {
             try
             {
@@ -155,11 +155,15 @@ namespace Shop.Controllers
                 //}
                 srvProduct sProducto = new srvProduct();
                 oProducto.precio = Convert.ToDecimal(precio.Replace(".", ","));               
-                sProducto.GuardarModificarProducto(oProducto);
-                string stNombreArchivo = imagen.FileName.Substring(imagen.FileName.LastIndexOf("\\") + 1).ToString();
-                string stRuta = "~/Images/Product/";                
-                imagen.SaveAs(Server.MapPath(stRuta + stNombreArchivo));
-                sProducto.guardarImagen(oProducto.idProducto, stNombreArchivo);
+                //sProducto.GuardarModificarProducto(oProducto);
+                foreach (HttpPostedFileBase oImg in imagen)
+                {
+                    string stNombreArchivo = oImg.FileName.Substring(oImg.FileName.LastIndexOf("\\") + 1).ToString();
+                    string stRuta = "~/Images/Product/";
+                    oImg.SaveAs(Server.MapPath(stRuta + stNombreArchivo));
+                    sProducto.guardarImagen(oProducto.idProducto, stNombreArchivo);
+                }
+                
                 return RedirectToAction("ViewProduct","Admin");
             }
             catch (Exception)
