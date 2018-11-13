@@ -1,7 +1,4 @@
-﻿@{
-    
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -30,37 +27,26 @@
                 <aside class="col-12 col-md-12 p-0" style="background-color:#2d2d2d ">
                     <nav class="navbar navbar-expand-lg navbar-dark flex-md-column flex-row align-items-start py-2">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            @*PONER OTRO ICONO*@
-
-                            <i style="font-size: 34px;" class="fa fa-filter"></i>
+                            <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse w-100" id="navbarNav">
                             <ul class="navbar-nav flex-md-column navbar-nav w-100 justify-content-between">
                                 <li class="nav-item active">
-                                    <p class="nav-link" href="#">CATEGORÍAS</p>
+                                    <p class="nav-link" href="#">PRODUCTO</p>
                                     <hr />
-
-                                    <div class="panel-group accordion-menu" id="accordion">
-                                        <p>
-                                            <span href="">Producto</span>
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#Collapse_Producto"><i class="pull-right fa fa-caret-down"></i></a>
-
-                                        </p>
-                                        <div id="Collapse_Producto" class="collapse">
-                                            <ul style="list-style-type: none">
-                                                    <li><a href="@Url.Action("ViewProduct", "Admin")">Agregar producto</a></li>
-                                                    <li><a href="@Url.Action("ViewProduct", "Admin")">Lista de producto</a></li>    
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    
-
+                                    <ul style="list-style-type: none">
+                                        <li><a href="@Url.Action("ViewProduct", "Admin")">Agregar producto</a></li>
+                                        <li><a href="@Url.Action("ViewProduct", "Admin")">Lista de producto</a></li>
+                                    </ul>
                                 </li>
                                 <li class="nav-item active">
-                                    <p class="nav-link" href="#">Ordenar por</p>
+                                    <p class="nav-link" href="#">VENTAS</p>
                                     <hr />
+                                    <ul style="list-style-type: none">
+                                        <li><a href="@Url.Action("SalesList", "Admin")">Ventas</a></li>
+                                    </ul>
                                 </li>
+
 
                             </ul>
                         </div>

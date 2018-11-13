@@ -43,5 +43,23 @@ namespace Shop.Services
             }
 
         }
+        public Venta CancelarVenta(string order_id)
+        {
+            try
+            {
+                using (DB_A363ED_ShopEntities bd = new DB_A363ED_ShopEntities())
+                {
+                    Venta oVenta = bd.Venta.Where(x => x.MP_order_id == order_id).FirstOrDefault();
+                    oVenta.idEstado = 2;
+                    bd.Entry(oVenta).State = System.Data.Entity.EntityState.Modified;
+                    bd.SaveChanges();
+                    return oVenta;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

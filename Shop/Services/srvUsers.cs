@@ -14,7 +14,7 @@ namespace Shop.Services
             {
                 using (DB_A363ED_ShopEntities bd = new DB_A363ED_ShopEntities())
                 {
-                    return bd.Usuario.Where(x => x.nombreUsuario == oUser.nombreUsuario.ToUpper() && x.contraseña == oUser.contraseña).First();
+                    return bd.Usuario.Where(x => x.nombreUsuario == oUser.nombreUsuario.ToUpper() && x.contraseña == oUser.contraseña).FirstOrDefault();
                 }
             }
             catch (Exception)
