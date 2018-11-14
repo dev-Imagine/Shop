@@ -13,7 +13,17 @@ namespace Shop.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: Admin
+        public ActionResult Index()
+        {
+            if (Session["Usuario"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+        }
         public ActionResult ViewProduct()
         {
             if (Session["Usuario"] != null)
@@ -24,7 +34,7 @@ namespace Shop.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Admin");
             }
 
         }
@@ -39,17 +49,17 @@ namespace Shop.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Admin");
             }
         }
-
         public ActionResult LogIn()
         {
+            Session["Usuario"] = null;
             return View();
-
         }
+        // METODOS
         [HttpPost]
-        public ActionResult LogIn(Usuario oUser)
+        public ActionResult Ingresar(Usuario oUser)
         {
             srvUsers sUser = new srvUsers();
             Usuario oUs = new Usuario();
@@ -57,15 +67,14 @@ namespace Shop.Controllers
             if (oUs != null)
             {
                 Session["Usuario"] = oUs;
+                return RedirectToAction("Index", "Admin");
             }
             else
             {
                 Session["Usuario"] = null;
+                return RedirectToAction("Login", "Admin");
             }
-            return View();
-
         }
-        // METODOS
         [HttpPost]
         public JsonResult CancelSale(string order_id)
         {

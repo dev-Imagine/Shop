@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Shop.Models.Usuario oUsuario = (Shop.Models.Usuario)Session["Usuario"];
+}
+
+<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(../../Content/images/img_bg_2.jpg);">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="display-t text-center">
+            <div class="display-tc animate-box" data-animate-effect="fadeIn">
+                <h1>Bienvenido @oUsuario.nombreUsuario</h1>
+            </div>
+        </div>
+    </div>
+</header>

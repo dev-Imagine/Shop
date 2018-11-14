@@ -24,7 +24,7 @@
 <body>
         <div class="container-fluid h-100">
             <div class="row h-100">
-                <aside class="col-12 col-md-12 p-0" style="background-color:#2d2d2d ">
+                <aside class="p-0" style="background-color:#2d2d2d ">
                     <nav class="navbar navbar-expand-lg navbar-dark flex-md-column flex-row align-items-start py-2">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -32,16 +32,14 @@
                         <div class="collapse navbar-collapse w-100" id="navbarNav">
                             <ul class="navbar-nav flex-md-column navbar-nav w-100 justify-content-between">
                                 <li class="nav-item active">
-                                    <p class="nav-link" href="#">PRODUCTO</p>
-                                    <hr />
-                                    <ul style="list-style-type: none">
+                                    <p class="nav-link" style="border-bottom: 1px solid rgb(209, 194, 134); margin-bottom:10px;">PRODUCTO</p>
+                                    <ul style="list-style-type: none; padding-left: 20px;">
                                         <li><a href="@Url.Action("ViewProduct", "Admin")">Agregar producto</a></li>
                                         <li><a href="@Url.Action("ViewProduct", "Admin")">Lista de producto</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item active">
-                                    <p class="nav-link" href="#">VENTAS</p>
-                                    <hr />
+                                    <p class="nav-link" style="border-bottom: 1px solid rgb(209, 194, 134); margin-bottom:10px;">VENTAS</p>
                                     <ul style="list-style-type: none">
                                         <li><a href="@Url.Action("SalesList", "Admin")">Ventas</a></li>
                                     </ul>
@@ -53,23 +51,14 @@
                     </nav>
                 </aside>
                 <main class="col bg-faded py-3">
-                    <div id="fh5co-product">
-                        <div class="container-fluid">
-                            <div class="row" id="listProduct">
-                                @Html.Action("_ProductList", "Product", new { pageIndex = 0, pageSize = 3, stSearch = ViewBag.search })
-
-                            </div>
-                            <div id="progress" class="row" style="display:none;min-height:400px; width: 100%; height: 100%; background: url(../../Content/images/loader.gif) center no-repeat #fff;">
-                            </div>
-                        </div>
-                    </div>
+                    @RenderBody()
                 </main>
             </div>
         </div>
     
 
 
-    @RenderBody()
+    
 
 
 
