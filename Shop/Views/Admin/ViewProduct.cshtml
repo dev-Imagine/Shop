@@ -6,16 +6,13 @@
 
 <div class="row">
 
-    <div class="col-md-5 container">
+    <div class="col-md-5">
         <div class="col-12" style="text-align:center">
             <h2 onclick="seleccionarImagen()" style="cursor:pointer" class="btn-outline">Agregar imagen<span  style="width:100%;height:100%" class="fa fa-plus-circle"></span></h2>
         </div>
-        @*<div class="col-md-12 animate-box">*@
-            <div class="col-12" id="Div-imgSalida">
-
-            @*</div>*@
+        <div class="col-12 col-md-12" id="Div-imgSalida">
         </div>
-        </div>
+    </div>
 
     <div class="col-md-7 animate-box">
         <h3>Nuevo Producto</h3>
@@ -119,15 +116,15 @@
 
     //    $(function () {
     //        var idDeNuevo = contadorImg + 1;
-    //        $('#file-input-' + contadorImg).change(function (e) {
-
+    //        $('#file-input-' + contadorImg).change(function (e) {                
+              
     //            $('#Div-imgSalida').append("<img id=\"imgSalida\-" + contadorImg + "\" style=\"width:100px;height:100px\" src=\"\"/>");
-
+          
     //            $('#div-imagen').append("<input name=\"imagen\" class=\"\" id=\"file-input\-" + idDeNuevo + "\" type=\"file\" />");
 
     //            contadorImg++;
     //            addImage(e);
-
+                
     //        });
 
     //        function addImage(e) {
@@ -146,54 +143,47 @@
     //            var result = e.target.result;
     //            var idViejo = contadorImg - 1;
     //            $('#imgSalida-' + idViejo).attr("src", result);
-
-
+                
+                
     //        }
     //    });
 
     //});
 
+        
 
+    ///* FIN INPUT IMAGEN */
 
-        ///* FIN INPUT IMAGEN */
-    var bandera = true;
     function seleccionarImagen()
     {
         $('#file-input-' + contadorImg).click();
-        
         $('#file-input-' + contadorImg).change(function (e) {
 
-            if (bandera == false) {
-                return;
-            }
             $('#Div-imgSalida').append("<img id=\"imgSalida\-" + contadorImg + "\" style=\"width:300px;height:300px\" src=\"\"/>");
-            //$('#Div-imgSalida').append("<div class=\"item\"><div class=\"active text-center\"><figure><img id=\"imgSalida\-" + contadorImg +"\" class=\"img-fluid\" style= \"max-height:420px;\"></figure></div></div>");
-
             var idDeNuevo = contadorImg + 1;
             $('#div-imagen').append("<input name=\"imagen\" class=\"dis-none\" id=\"file-input\-" + idDeNuevo + "\" type=\"file\" />");
             addImage(e);
-
-            function addImage(e) {
-                var file = e.target.files[0],
-                    imageType = /image.*/;
-                if (!file.type.match(imageType))
-                    return;
-                var reader = new FileReader();
-                reader.onload = fileOnload;
-                reader.readAsDataURL(file);
-                bandera = false;
-            }
-
-            function fileOnload(e) {
-                var result = e.target.result;
-                $('#imgSalida-' + contadorImg).attr("src", result);
-                contadorImg++;
-                bandera = true;
-
-            }
         });
 
-        
+        function addImage(e) {
+            var file = e.target.files[0],
+                imageType = /image.*/;
+
+            if (!file.type.match(imageType))
+                return;
+
+            var reader = new FileReader();
+            reader.onload = fileOnload;
+            reader.readAsDataURL(file);
+        }
+
+        function fileOnload(e) {
+            var result = e.target.result;
+            $('#imgSalida-' + contadorImg).attr("src", result);
+            contadorImg++;
+
+
+        }
     }
     //Categoria
 
