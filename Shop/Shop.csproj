@@ -234,6 +234,7 @@
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\sweetalert.css" />
     <Content Include="Content\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\camara.jpg" />
     <Content Include="Content\images\gracias.png" />
     <Content Include="Content\images\image-not-found.png" />
     <Content Include="Content\images\img_bg_1.jpg" />
