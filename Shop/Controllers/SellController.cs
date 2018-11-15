@@ -44,6 +44,7 @@ namespace Shop.Controllers
                     if (((Hashtable)Payment["collection"])["status"].ToString() == "approved")
                     {
                         // get info order --> "Order"
+                        // https://api.mercadopago.com/merchant_orders/857112399?access_token=APP_USR-3825884689807039-100215-028a54b7ff4b3017ab7830f35784a693-357350759
                         string baseUrl = "https://api.mercadopago.com";
                         string url = "merchant_orders/" + orderID + "?access_token=" + srvConfig.MP_client_access_token();
                         using (var client = new HttpClient())

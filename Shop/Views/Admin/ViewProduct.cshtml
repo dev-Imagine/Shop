@@ -2,18 +2,37 @@
     ViewBag.Title = "ViewProduct";
     List<Shop.Models.Categoria> lstCategoria = (List<Shop.Models.Categoria>)ViewBag.lstCategoria;
 }
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
 
 <div class="row">
-
     <div class="col-md-5">
-        <div class="col-12" style="text-align:center">
-            <h2 onclick="seleccionarImagen()" style="cursor:pointer" class="btn-outline">Agregar imagen<span  style="width:100%;height:100%" class="fa fa-plus-circle"></span></h2>
-        </div>
-        <div class="col-12 col-md-12" id="Div-imgSalida">
-        </div>
-    </div>
 
+        <button onclick="seleccionarImagen()" style="cursor:pointer" class="btn btn-primary btn-outline w-100"><i class="fa fa-plus"></i> Agregar imagen</button>
+        <hr />
+        <div id="Div-imgSalida" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li id="li-SinImg" data-target="#Div-imgSalida" data-slide-to="0" class="active"></li>
+
+            </ol>
+            <div class="carousel-inner">
+                <div id="div-SinImg" class="text-center carousel-item active">
+                    <img id="imgSalida-0" class="img-fluid" style="max-height:550px; min-height:200px;" src="~/Content/images/camara.jpg" alt="First slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#Div-imgSalida" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#Div-imgSalida" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <p class="text-mute text-center">Tamaño recomendado 1200x1000.</p>
+    </div>
     <div class="col-md-7 animate-box">
         <h3>Nuevo Producto</h3>
         <form method="post" action="@Url.Action("GuardarModificarProducto","Product")" enctype="multipart/form-data">
@@ -45,13 +64,13 @@
                     }
                 </div>
 
-                
+
             </div>
             <div class="row form-group">
                 <div class="col-md-12">
                     <input type="text" name="oProducto.nombre" required id="idNombre" class="form-control" placeholder="Nombre del producto">
                 </div>
-                
+
             </div>
             @* Stocks *@
             <div class="row form-group">
@@ -72,7 +91,7 @@
                 </div>
                 <div class="col-12 col-md-6">
                     <input type="text" name="oProducto.descuento" required id="idDescuento" class="form-control" placeholder="Descuento">
-                </div>                
+                </div>
             </div>
             @* medidas *@
             <div class="row form-group">
@@ -111,55 +130,20 @@
 @section scripts{
     <script>
         var contadorImg = 0;
-    ///* INPUT IMAGEN */
-    //$(window).load(function () {
-
-    //    $(function () {
-    //        var idDeNuevo = contadorImg + 1;
-    //        $('#file-input-' + contadorImg).change(function (e) {                
-              
-    //            $('#Div-imgSalida').append("<img id=\"imgSalida\-" + contadorImg + "\" style=\"width:100px;height:100px\" src=\"\"/>");
-          
-    //            $('#div-imagen').append("<input name=\"imagen\" class=\"\" id=\"file-input\-" + idDeNuevo + "\" type=\"file\" />");
-
-    //            contadorImg++;
-    //            addImage(e);
-                
-    //        });
-
-    //        function addImage(e) {
-    //            var file = e.target.files[0],
-    //                imageType = /image.*/;
-
-    //            if (!file.type.match(imageType))
-    //                return;
-
-    //            var reader = new FileReader();
-    //            reader.onload = fileOnload;
-    //            reader.readAsDataURL(file);
-    //        }
-
-    //        function fileOnload(e) {
-    //            var result = e.target.result;
-    //            var idViejo = contadorImg - 1;
-    //            $('#imgSalida-' + idViejo).attr("src", result);
-                
-                
-    //        }
-    //    });
-
-    //});
-
-        
-
-    ///* FIN INPUT IMAGEN */
-
     function seleccionarImagen()
     {
         $('#file-input-' + contadorImg).click();
         $('#file-input-' + contadorImg).change(function (e) {
 
-            $('#Div-imgSalida').append("<img id=\"imgSalida\-" + contadorImg + "\" style=\"width:300px;height:300px\" src=\"\"/>");
+            //$('#Div-imgSalida').append("<img id=\"imgSalida\-" + contadorImg + "\" style=\"width:300px;height:300px\" src=\"\"/>");
+            
+            if (contadorImg != 0) {
+                $('.carousel-inner').append('<div class="text-center carousel-item"><img id="imgSalida-' + contadorImg + '" class="img-fluid" style="max-height:550px; min-height:200px;" src=""/></div>');
+                $('.carousel-indicators').append('<li data-target="#Div-imgSalida" data-slide-to="' + contadorImg + '"></li>');
+            }
+
+            
+
             var idDeNuevo = contadorImg + 1;
             $('#div-imagen').append("<input name=\"imagen\" class=\"dis-none\" id=\"file-input\-" + idDeNuevo + "\" type=\"file\" />");
             addImage(e);
@@ -181,8 +165,6 @@
             var result = e.target.result;
             $('#imgSalida-' + contadorImg).attr("src", result);
             contadorImg++;
-
-
         }
     }
     //Categoria
@@ -201,33 +183,8 @@
                 document.getElementById("select-Subcategoria").removeAttribute("disabled");
             }
         });
-    }
-
-    function _PopUpGuardarModificarCategoria(idCategoria, tipo) {
-        if (idCategoria == 1) {
-            idCategoria = document.getElementById("select-Categorias").value;
         }
-        var url = "@Url.Action("_PopUpGuardarModificarCategoria", "Product")";
-        var data = { idCategoria: idCategoria };
 
-        $.post(url, data).done(function (data) {
 
-            if (data.length > 0) {
-                $('#div-popup-categoria').html(data);
-                $('#popupCategoria').modal('show');
-                if (tipo == 1) {
-                    $('#spnTituloPopUp').text('NUEVA CATEGORIA')
-                } else {
-                    $('#spnTituloPopUp').text('NUEVA SUBCATEGORIA')
-                }
-
-            }
-        });
-    }
-
-    function prueba() {
-        var idSub = $('#select-Subcategoria').val();
-        alert(idSub);
-    }
     </script>
 }
